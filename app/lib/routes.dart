@@ -22,7 +22,7 @@ class Routes {
     final args = settings.arguments;
 
     switch (settings.name) {
-      case '/':
+      case '/homescreen':
         return MaterialPageRoute(builder: (context) => FirstPage(context));
       case '/splash':
         return MaterialPageRoute(builder: (_) => SplashScreen());
