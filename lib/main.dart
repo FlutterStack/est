@@ -1,11 +1,12 @@
 // import 'package:expert_properties/components/foldables_sidebar.dart';
-import 'file:///C:/Users/Devi/AndroidStudioProjects/expert_properties/lib/menu/menuDashboard.dart';
-import 'file:///C:/Users/Devi/AndroidStudioProjects/expert_properties/lib/maincreens/agricultural_page.dart';
+import 'package:expert_properties/menu/menuDashboard.dart';
+import 'package:expert_properties/maincreens/agricultural_page.dart';
 import 'package:expert_properties/maincreens/commercial_page.dart';
-import 'file:///C:/Users/Devi/AndroidStudioProjects/expert_properties/lib/maincreens/industrial_page.dart';
-import 'file:///C:/Users/Devi/AndroidStudioProjects/expert_properties/lib/maincreens/residential_page.dart';
+import 'package:expert_properties/maincreens/splash_screen.dart';
+import 'package:expert_properties/maincreens/residential_page.dart';
 import 'package:expert_properties/maincreens/to_sell_page.dart';
-import 'file:///C:/Users/Devi/AndroidStudioProjects/expert_properties/lib/maincreens/splash_screen.dart';
+import 'package:expert_properties/maincreens/splash_screen.dart';
+import 'package:expert_properties/maincreens/industrial_page.dart';
 import 'package:flutter/material.dart';
 import 'maincreens/first_page.dart';
 

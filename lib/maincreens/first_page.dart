@@ -1,4 +1,4 @@
-import 'file:///C:/Users/Devi/AndroidStudioProjects/expert_properties/lib/components/bgCard.dart';
+import 'package:expert_properties/components/bgCard.dart';
 import 'package:expert_properties/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';

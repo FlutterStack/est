@@ -1,4 +1,4 @@
-import 'file:///C:/Users/Devi/AndroidStudioProjects/expert_properties/lib/maincreens/first_page.dart';
+import 'package:expert_properties/maincreens/first_page.dart';
 import 'package:expert_properties/menu/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:expert_properties/constants.dart';

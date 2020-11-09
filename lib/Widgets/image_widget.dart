@@ -1,5 +1,5 @@
 import 'package:expert_properties/constants.dart';
-import 'file:///C:/Users/Devi/AndroidStudioProjects/expert_properties/lib/maincreens/item_detail_screen.dart';
+import 'package:expert_properties/maincreens/item_detail_screen.dart';
 // import 'package:expert_properties/screens/residential_page.dart';
 import 'package:flutter/material.dart';
 
