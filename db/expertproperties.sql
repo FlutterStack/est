@@ -69,13 +69,14 @@ CREATE TABLE `subclass` (
 --
 
 CREATE TABLE `users` (
-  `idusers` int(10) NOT NULL,
+  `idusers` int(10) NOT NULL AUTO_INCREMENT,
   `first_name` varchar(45) NOT NULL,
   `last_name` varchar(45) NOT NULL,
-  `gmail_id` varchar(45) NOT NULL,
-  `mobile_no` int(12) NOT NULL,
-  `passwords` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `email` varchar(45) NOT NULL,
+  `mobile_no` int(12) DEFAULT NULL,
+  `password` varchar(255) NOT NULL,
+  PRIMARY KEY (`idusers`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
 
 --
 -- Indexes for dumped tables
@@ -125,3 +126,25 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+ALTER TABLE `expertproperties`.`subclass` 
+ADD INDEX `subclass_fk_01_idx` (`id_residential` ASC);
+;
+ALTER TABLE `expertproperties`.`subclass` 
+ADD CONSTRAINT `subclass_fk_01`
+  FOREIGN KEY (`id_residential`)
+  REFERENCES `expertproperties`.`residential` (`id_residential`)
+  ON DELETE RESTRICT
+  ON UPDATE RESTRICT;
+
+
+ALTER TABLE `expertproperties`.`imgsub` 
+ADD INDEX `imgsub_fk_01_idx` (`sub_id` ASC);
+;
+ALTER TABLE `expertproperties`.`imgsub` 
+ADD CONSTRAINT `imgsub_fk_01`
+  FOREIGN KEY (`sub_id`)
+  REFERENCES `expertproperties`.`subclass` (`sub_id`)
+  ON DELETE RESTRICT
+  ON UPDATE RESTRICT;
