@@ -76,7 +76,7 @@ CREATE TABLE `users` (
   `mobile_no` int(12) DEFAULT NULL,
   `password` varchar(255) NOT NULL,
   PRIMARY KEY (`idusers`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Indexes for dumped tables
