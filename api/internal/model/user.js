@@ -20,7 +20,7 @@ User.findByEmail = (email, password, result) => {
             result(null, res[0]);
             return;
         } 
-        if(res.length) {
+        if(err) {
             console.log("Unable to found the user");
             result(err, null);
             console.log(err);

@@ -7,7 +7,7 @@ import 'package:expert_properties/maincreens/residential_page.dart';
 import 'package:expert_properties/maincreens/to_sell_page.dart';
 import 'package:expert_properties/maincreens/splash_screen.dart';
 import 'package:expert_properties/maincreens/industrial_page.dart';
-
+import 'package:expert_properties/login/LoginScreen.dart';
 import 'maincreens/agricultural_page.dart';
 import 'maincreens/commercial_page.dart';
 import 'maincreens/first_page.dart';
@@ -38,6 +38,8 @@ class Routes {
         return MaterialPageRoute(builder: (_) => ToSellPage());
       case '/menuDashboard':
         return MaterialPageRoute(builder: (_) => MenuDashboard());
+      case '/login':
+        return MaterialPageRoute(builder: (_) => LoginScreen());
     }
   }
 
