@@ -24,14 +24,17 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `imgsub`
+-- Table structure for table `lu_estate_img`
 --
 
-CREATE TABLE `imgsub` (
-  `img_id` int(10) UNSIGNED NOT NULL,
-  `sub_id` int(10) UNSIGNED NOT NULL,
-  `img_path` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `lu_estate_img` (
+  `img_id` int(10) unsigned NOT NULL,
+  `sub_id` int(10) unsigned NOT NULL,
+  `img_path` varchar(255) NOT NULL,
+  PRIMARY KEY (`img_id`),
+  KEY `imgsub_fk_01_idx` (`sub_id`),
+  CONSTRAINT `imgsub_fk_01` FOREIGN KEY (`sub_id`) REFERENCES `lu_estate_info` (`sub_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
 
 -- --------------------------------------------------------
 
@@ -48,20 +51,21 @@ CREATE TABLE `residential` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `subclass`
+-- Table structure for table `lu_estate_info`
 --
-
-CREATE TABLE `subclass` (
-  `sub_id` int(10) UNSIGNED NOT NULL,
+CREATE TABLE `lu_estate_info` (
+  `sub_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `estate_id` int(10) unsigned NOT NULL,
   `no_of_rooms` int(15) NOT NULL,
   `no_of_garage` int(10) DEFAULT NULL,
   `no_of_kitchens` int(10) NOT NULL,
   `no_of_bathrooms` int(10) NOT NULL,
   `description` varchar(255) NOT NULL,
   `size` varchar(100) NOT NULL,
-  `id_residential` int(11) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
+  PRIMARY KEY (`sub_id`),
+  KEY `lu_estate_info_fk_01_idx` (`estate_id`),
+  CONSTRAINT `lu_estate_info_fk_01` FOREIGN KEY (`estate_id`) REFERENCES `estate` (`estate_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
 -- --------------------------------------------------------
 
 --
@@ -79,13 +83,28 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
+-- Table structure for table `estate`
+--
+
+CREATE TABLE `estate` (
+  `estate_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_residential` int(11) unsigned NOT NULL,
+  `estate_name` varchar(255) NOT NULL,
+  `estate_location` varchar(255) NOT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`estate_id`),
+  KEY `estate_fk_01_idx` (`id_residential`),
+  CONSTRAINT `estate_fk_01` FOREIGN KEY (`id_residential`) REFERENCES `residential` (`id_residential`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
+
+--
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `imgsub`
+-- Indexes for table `lu_estate_img`
 --
-ALTER TABLE `imgsub`
+ALTER TABLE `lu_estate_img`
   ADD PRIMARY KEY (`img_id`);
 
 --
@@ -95,9 +114,9 @@ ALTER TABLE `residential`
   ADD PRIMARY KEY (`id_residential`);
 
 --
--- Indexes for table `subclass`
+-- Indexes for table `lu_estate_info`
 --
-ALTER TABLE `subclass`
+ALTER TABLE `lu_estate_info`
   ADD PRIMARY KEY (`sub_id`);
 
 --
