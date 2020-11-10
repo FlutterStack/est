@@ -29,13 +29,12 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `lu_estate_img` (
   `img_id` int(10) unsigned NOT NULL,
-  `sub_id` int(10) unsigned NOT NULL,
+  `estate_id` int(10) unsigned NOT NULL,
   `img_path` varchar(255) NOT NULL,
   PRIMARY KEY (`img_id`),
-  KEY `imgsub_fk_01_idx` (`sub_id`),
-  CONSTRAINT `imgsub_fk_01` FOREIGN KEY (`sub_id`) REFERENCES `lu_estate_info` (`sub_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
-
+  KEY `lu_estate_img_fk_01_idx` (`estate_id`),
+  CONSTRAINT `lu_estate_img_fk_01` FOREIGN KEY (`estate_id`) REFERENCES `estate` (`estate_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 -- --------------------------------------------------------
 
 --
@@ -65,7 +64,7 @@ CREATE TABLE `lu_estate_info` (
   PRIMARY KEY (`sub_id`),
   KEY `lu_estate_info_fk_01_idx` (`estate_id`),
   CONSTRAINT `lu_estate_info_fk_01` FOREIGN KEY (`estate_id`) REFERENCES `estate` (`estate_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 -- --------------------------------------------------------
 
 --
@@ -95,7 +94,7 @@ CREATE TABLE `estate` (
   PRIMARY KEY (`estate_id`),
   KEY `estate_fk_01_idx` (`id_residential`),
   CONSTRAINT `estate_fk_01` FOREIGN KEY (`id_residential`) REFERENCES `residential` (`id_residential`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Indexes for dumped tables
