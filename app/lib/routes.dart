@@ -1,3 +1,4 @@
+import 'package:expert_properties/maincreens/estates.dart';
 import 'package:flutter/material.dart';
 import 'package:expert_properties/menu/menuDashboard.dart';
 import 'package:expert_properties/maincreens/agricultural_page.dart';
@@ -16,6 +17,7 @@ import 'maincreens/residential_page.dart';
 import 'maincreens/splash_screen.dart';
 import 'maincreens/to_sell_page.dart';
 import 'menu/menuDashboard.dart';
+import 'package:expert_properties/maincreens/estate_details.dart';
 
 class Routes {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -40,6 +42,10 @@ class Routes {
         return MaterialPageRoute(builder: (_) => MenuDashboard());
       case '/login':
         return MaterialPageRoute(builder: (_) => LoginScreen());
+      case '/estates':
+        return MaterialPageRoute(builder: (_) => Estate(args));
+      case '/estate/info':
+        return MaterialPageRoute(builder: (_) => EstateDetails(args));
     }
   }
 

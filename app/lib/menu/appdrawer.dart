@@ -9,6 +9,7 @@ class AppDrawer extends StatefulWidget {
 }
 
 class _AppDrawerState extends State<AppDrawer> {
+  User user;
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -26,15 +27,17 @@ class _AppDrawerState extends State<AppDrawer> {
       builder: (context, state) {
         if (state is UserInitial) {
           print("Initial User");
+          return loadDrawer();
         } else if (state is UserLoaded) {
-          return loadDrawer(state.user);
+          user = state.user;
+          return loadDrawer();
         }
       },
     ));
   }
 
   // LOAD DRAWER
-  Widget loadDrawer(User user) {
+  Widget loadDrawer() {
     return Center(
       child: Column(
         children: [

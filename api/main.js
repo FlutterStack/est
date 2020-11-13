@@ -1,8 +1,7 @@
 var express = require('express');
 require('express-group-routes');
-// const user = require('./internal/controller/usercontroller');
 
-const {User, Property} = require('./internal/controller/maincontroller');
+const {User, Property, Estate} = require('./internal/controller/maincontroller');
 
 const bodyParser = require('body-parser');
 var app = express();
@@ -12,6 +11,8 @@ app.use(bodyParser.urlencoded({ extended: true}));
 app.group("/api/v1", (router) => {
     router.post('/user/auth', User.userAuth);
     router.get('/properties', Property.loadProperties);
+    router.post('/estates', Estate.getEstateByPropertyId);
+    router.post('/estate/info', Estate.getEstateInfo);
 });
 
 

@@ -1,13 +1,14 @@
 const dbcon = require('../../config/database');
 
 const Property = function(property) {
+    this.propertyId = property.propertyId;
     this.name = property.name;
     this.description = property.description;
 }
 
 Property.getProperties = (result) => {
     var sqlSel = "";
-    sqlSel = sqlSel + " SELECT * FROM residential";
+    sqlSel = sqlSel + " SELECT * FROM property";
 
     dbcon.query(sqlSel, (err, res) => {
         if(err) {

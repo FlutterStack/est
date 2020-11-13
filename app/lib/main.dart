@@ -1,4 +1,6 @@
 // import 'package:expert_properties/components/foldables_sidebar.dart';
+import 'package:expert_properties/bloc/estates/cubit/estate_cubit.dart';
+import 'package:expert_properties/bloc/estates/repository/estate_repository.dart';
 import 'package:expert_properties/bloc/properties/cubit/property_cubit.dart';
 import 'package:expert_properties/bloc/properties/repository/property_repository.dart';
 import 'package:expert_properties/bloc/user/cubit/user_cubit.dart';
@@ -20,6 +22,9 @@ class Properties extends StatelessWidget {
         ),
         BlocProvider(
           create: (_) => PropertyCubit(PropertyRepo()),
+        ),
+        BlocProvider(
+          create: (_) => EstateCubit(EstateRepository()),
         )
       ],
       child: MaterialApp(

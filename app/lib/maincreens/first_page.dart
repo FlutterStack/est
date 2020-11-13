@@ -51,7 +51,7 @@ class _FirstPageState extends State<FirstPage> {
       right: isCollapsed ? 0 : -0.4 * screenWidth,
       duration: duration,
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.grey[100],
         appBar: AppBar(
           backgroundColor: kAFabColor,
           title: Text(
@@ -116,13 +116,13 @@ class _FirstPageState extends State<FirstPage> {
               flex: 8,
               child: Container(
                 decoration: BoxDecoration(
-                  color: Colors.red[700],
+                  color: Colors.red[800],
                   borderRadius: BorderRadius.circular(20.0),
                   boxShadow: [
                     BoxShadow(
                       color: Colors.red.withOpacity(0.5),
-                      spreadRadius: 2,
-                      blurRadius: 25,
+                      spreadRadius: 1,
+                      blurRadius: 20,
                       offset: Offset(0, 10),
                     )
                   ],
@@ -130,7 +130,19 @@ class _FirstPageState extends State<FirstPage> {
                 margin: EdgeInsets.only(top: 40),
                 child: Center(
                   child: ListTile(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.pushNamed(
+                        context,
+                        '/estates',
+                        arguments: {
+                          'property': property[index],
+                        },
+                      );
+                      // Navigator.pushNamed(
+                      //   context,
+                      //   '/residential',
+                      // );
+                    },
                     contentPadding: EdgeInsets.all(15),
                     leading: Container(
                       padding: EdgeInsets.all(10),

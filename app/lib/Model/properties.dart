@@ -9,7 +9,7 @@ class Property extends Equatable {
 
   factory Property.fromJson(Map<String, dynamic> map) {
     return Property(
-      map['id_residential'],
+      map['property_id'],
       map['class_name'],
       map['description'],
     );
