@@ -48,4 +48,45 @@ Estate.getInfo = (estateId, result) => {
     });
 }
 
+Estate.addUserFavorites = (estateId, userId, result) => {
+    var sqlIns = "";
+    sqlIns = sqlIns + " INSERT INTO user_favorites SET estate_id=?, idusers=?";
+
+    console.log("QUERY: " + sqlIns);
+    dbcon.query(sqlIns, [estateId, userId], (err, res) => {
+        if(err) {
+            console.log("Unable to do insert");
+            result(err, null);
+            return;
+        } else if(res) {
+            console.log('Success insert');
+            var statuscode = 0;
+            result(null, statuscode.toString());
+            return;
+        }
+        result({data: null}, null);
+    });
+}
+
+Estate.getUserFavorites = (userId, result) => {
+    var sqlSel = "";
+    sqlSel = sqlSel + " SELECT * FROM user_favorites uf";
+    sqlSel = sqlSel + " INNER JOIN estate e ON e.estate_id = uf.estate_id"
+    sqlSel = sqlSel + " AND uf.idusers=?";
+
+    console.log("QUERY: " + sqlSel);
+    dbcon.query(sqlSel, [userId], (err, res) => {
+        if(err) {
+            console.log("Unable to do insert");
+            result(err, null);
+            return;
+        } else if(res.length) {
+            console.log('User Fav List:', res[0]);
+            result(null, res);
+            return;
+        }
+        result({data: null}, null);
+    });
+}
+
 module.exports = Estate;

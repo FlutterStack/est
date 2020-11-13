@@ -85,11 +85,11 @@ class _AppDrawerState extends State<AppDrawer> {
                         ListTile(
                           leading: Icon(Icons.person),
                           onTap: () {
-                            Navigator.pushNamedAndRemoveUntil(
-                                context,
-                                '/customer/editprofile',
-                                ModalRoute.withName(
-                                    '/customer/customerhomescreen'));
+                            // Navigator.pushNamedAndRemoveUntil(
+                            //     context,
+                            //     '/customer/editprofile',
+                            //     ModalRoute.withName(
+                            //         '/customer/customerhomescreen'));
                           },
                           dense: true,
                           title: Text('Profile',
@@ -100,11 +100,11 @@ class _AppDrawerState extends State<AppDrawer> {
                         ListTile(
                           leading: Icon(Icons.settings),
                           onTap: () {
-                            Navigator.pushNamedAndRemoveUntil(
-                                context,
-                                '/customer/editprofile',
-                                ModalRoute.withName(
-                                    '/customer/customerhomescreen'));
+                            // Navigator.pushNamedAndRemoveUntil(
+                            //     context,
+                            //     '/customer/editprofile',
+                            //     ModalRoute.withName(
+                            //         '/customer/customerhomescreen'));
                           },
                           dense: true,
                           title: Text('Settings',
@@ -115,11 +115,12 @@ class _AppDrawerState extends State<AppDrawer> {
                         ListTile(
                           leading: Icon(Icons.favorite),
                           onTap: () {
-                            Navigator.pushNamedAndRemoveUntil(
-                                context,
-                                '/customer/editprofile',
-                                ModalRoute.withName(
-                                    '/customer/customerhomescreen'));
+                            // Navigator.pushNamedAndRemoveUntil(
+                            //   context,
+                            //   '/user/favorites',
+                            //   ModalRoute.withName('/homescreen'),
+                            // );
+                            Navigator.pushNamed(context, '/user/favorites');
                           },
                           dense: true,
                           title: Text('Favorites',

@@ -37,3 +37,42 @@ exports.getEstateInfo = (req, res) => {
         }
     })
 }
+
+exports.addUserFavorites = (req, res) => {
+    var estateId = req.body.estateId;
+    var userId = req.body.userId;
+    Estate.addUserFavorites(estateId, userId, (err,data) => {
+        if(err) {
+            if(err.data == null) {
+                res.status(404).send({
+                    message: 'Unable to load estate information'
+                })
+            } else {
+                res.status(500).send({
+                    message: 'Server Error'
+                })
+            }
+        } else {
+            res.status(200).json(data);
+        }
+    });
+}
+
+exports.getUserFavorites = (req, res) => {
+    var userId = req.body.userId;
+    Estate.getUserFavorites(userId, (err, data) => {
+        if(err) {
+            if(err.data == null) {
+                res.status(404).send({
+                    message: 'Unable to load estate information'
+                })
+            } else {
+                res.status(500).send({
+                    message: 'Server Error'
+                })
+            }
+        } else {
+            res.status(200).json(data);
+        }
+    });
+}

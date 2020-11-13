@@ -13,6 +13,8 @@ app.group("/api/v1", (router) => {
     router.get('/properties', Property.loadProperties);
     router.post('/estates', Estate.getEstateByPropertyId);
     router.post('/estate/info', Estate.getEstateInfo);
+    router.post('/user/favorites/save', Estate.addUserFavorites);
+    router.post('/user/favorites/all', Estate.getUserFavorites);
 });
 
 

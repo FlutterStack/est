@@ -32,3 +32,4 @@ const kResultTextStyle = TextStyle(
 const kBMITextStyle = TextStyle(fontWeight: FontWeight.bold, fontSize: 100.0);
 const kBodyTextStyle = TextStyle(fontWeight: FontWeight.bold, fontSize: 22.0);
 const kButtonTextStyle = TextStyle(fontWeight: FontWeight.bold, fontSize: 15.0);
+const status_code_success = 0;

@@ -18,6 +18,7 @@ import 'maincreens/splash_screen.dart';
 import 'maincreens/to_sell_page.dart';
 import 'menu/menuDashboard.dart';
 import 'package:expert_properties/maincreens/estate_details.dart';
+import 'package:expert_properties/maincreens/user_favorites.dart';
 
 class Routes {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -46,6 +47,8 @@ class Routes {
         return MaterialPageRoute(builder: (_) => Estate(args));
       case '/estate/info':
         return MaterialPageRoute(builder: (_) => EstateDetails(args));
+      case '/user/favorites':
+        return MaterialPageRoute(builder: (_) => UserFavorites());
     }
   }
 

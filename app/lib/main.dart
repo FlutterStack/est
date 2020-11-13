@@ -5,6 +5,8 @@ import 'package:expert_properties/bloc/properties/cubit/property_cubit.dart';
 import 'package:expert_properties/bloc/properties/repository/property_repository.dart';
 import 'package:expert_properties/bloc/user/cubit/user_cubit.dart';
 import 'package:expert_properties/bloc/user/repository/user_repository.dart';
+import 'package:expert_properties/bloc/userfavorites/cubit/userfavorites_cubit.dart';
+import 'package:expert_properties/bloc/userfavorites/repository/userfavorites_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'maincreens/first_page.dart';
@@ -25,6 +27,9 @@ class Properties extends StatelessWidget {
         ),
         BlocProvider(
           create: (_) => EstateCubit(EstateRepository()),
+        ),
+        BlocProvider(
+          create: (_) => UserfavoritesCubit(UserFavRepository()),
         )
       ],
       child: MaterialApp(

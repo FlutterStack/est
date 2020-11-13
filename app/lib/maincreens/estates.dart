@@ -1,5 +1,8 @@
 import 'package:expert_properties/Model/estate.dart';
+import 'package:expert_properties/Model/user.dart';
 import 'package:expert_properties/bloc/estates/cubit/estate_cubit.dart';
+import 'package:expert_properties/bloc/user/cubit/user_cubit.dart';
+import 'package:expert_properties/bloc/userfavorites/cubit/userfavorites_cubit.dart';
 import 'package:expert_properties/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -15,8 +18,11 @@ class Estate extends StatefulWidget {
 
 class _EstateState extends State<Estate> {
   Utils utils = new Utils();
+  bool isAddToFavorites = false;
   List<EstateInfo> estates = [];
+  User user;
   bool matchFound = false;
+  int selectedEstateId;
   List<String> imageList = [
     "assets/images/house_1.jpg",
     "assets/images/house_2.jpg",
@@ -25,6 +31,7 @@ class _EstateState extends State<Estate> {
     "assets/images/house_5.jpg",
     "assets/images/house_6.png",
   ];
+  List selectedItems = [];
   final oCcy = new NumberFormat("##,##,###", "en_INR");
   TextEditingController _txtSearch = new TextEditingController();
   String searchKey = "";
@@ -80,25 +87,100 @@ class _EstateState extends State<Estate> {
               ),
             ),
             Container(
-              height: MediaQuery.of(context).size.height * 0.70,
-              child: BlocBuilder<EstateCubit, EstateState>(
-                builder: (context, state) {
-                  if (state is EstateInitial) {
-                    print("Initializing estate");
-                    return initialEstate();
-                  } else if (state is EstateLoading) {
-                    print("Loading State");
-                    return loadingEstate();
-                  } else if (state is EstateLoaded) {
-                    print("Loaded State");
-                    return loadEstates(state.estate);
-                  } else if (state is EstateError) {
-                    print("EstateError");
-                    return emptyEstates();
-                  }
-                },
-              ),
-            ),
+                height: MediaQuery.of(context).size.height * 0.70,
+                child: BlocBuilder<UserCubit, UserState>(
+                  builder: (context, state) {
+                    if (state is UserLoaded) {
+                      user = state.user;
+                      return BlocBuilder<UserfavoritesCubit,
+                          UserfavoritesState>(
+                        builder: (context, state) {
+                          if (state is UserFavoritesLoaded) {
+                            print("USER FAV LOADED");
+                            selectedItems.clear();
+                            selectedItems =
+                                state.userFav.map((e) => e.estateId).toList();
+                            print('SELECTED ITEMS' + selectedItems.toString());
+                            return BlocBuilder<EstateCubit, EstateState>(
+                              builder: (context, state) {
+                                if (state is EstateInitial) {
+                                  print("Initializing estate");
+                                  return initialEstate();
+                                } else if (state is EstateLoading) {
+                                  print("Loading State");
+                                  return loadingEstate();
+                                } else if (state is EstateLoaded) {
+                                  print("Loaded State");
+                                  return loadEstates(state.estate);
+                                } else if (state is EstateError) {
+                                  print("EstateError");
+                                  return emptyEstates();
+                                }
+                              },
+                            );
+                          } else if (state is UserfavoritesInitial) {
+                            print("USER Initial");
+                            return BlocBuilder<EstateCubit, EstateState>(
+                              builder: (context, state) {
+                                if (state is EstateInitial) {
+                                  print("Initializing estate");
+                                  return initialEstate();
+                                } else if (state is EstateLoading) {
+                                  print("Loading State");
+                                  return loadingEstate();
+                                } else if (state is EstateLoaded) {
+                                  print("Loaded State");
+                                  return loadEstates(state.estate);
+                                } else if (state is EstateError) {
+                                  print("EstateError");
+                                  return emptyEstates();
+                                }
+                              },
+                            );
+                          } else if (state is UserFavoritesLoading) {
+                            print("USER FAV LOADING");
+                            return BlocBuilder<EstateCubit, EstateState>(
+                              builder: (context, state) {
+                                if (state is EstateInitial) {
+                                  print("Initializing estate");
+                                  return initialEstate();
+                                } else if (state is EstateLoading) {
+                                  print("Loading State");
+                                  return loadingEstate();
+                                } else if (state is EstateLoaded) {
+                                  print("Loaded State");
+                                  return loadEstates(state.estate);
+                                } else if (state is EstateError) {
+                                  print("EstateError");
+                                  return emptyEstates();
+                                }
+                              },
+                            );
+                          } else if (state is UserFavoritesError) {
+                            print("USER FAV Error");
+                            return BlocBuilder<EstateCubit, EstateState>(
+                              builder: (context, state) {
+                                if (state is EstateInitial) {
+                                  print("Initializing estate");
+                                  return initialEstate();
+                                } else if (state is EstateLoading) {
+                                  print("Loading State");
+                                  return loadingEstate();
+                                } else if (state is EstateLoaded) {
+                                  print("Loaded State");
+                                  return loadEstates(state.estate);
+                                } else if (state is EstateError) {
+                                  print("EstateError");
+                                  return emptyEstates();
+                                }
+                              },
+                            );
+                          }
+                        },
+                      );
+                    }
+                  },
+                )),
           ],
         ),
       ),
@@ -213,11 +295,17 @@ class _EstateState extends State<Estate> {
                             ),
                             child: IconButton(
                               icon: Icon(
-                                Icons.favorite_border,
+                                selectedItems.contains(
+                                            estates[index].estateId) ||
+                                        selectedEstateId ==
+                                            estates[index].estateId
+                                    ? Icons.favorite
+                                    : Icons.favorite_border,
                                 color: Colors.red,
                               ),
                               onPressed: () {
-                                print("hello");
+                                addUserFavorites(
+                                    estates[index].estateId, user.userId);
                               },
                             ),
                           ),
@@ -241,5 +329,18 @@ class _EstateState extends State<Estate> {
         ),
       ),
     );
+  }
+
+  // ADD USER TO FAVORITES
+  Future<bool> addUserFavorites(int estateId, int userId) async {
+    final UserfavoritesCubit _userFavCubit =
+        BlocProvider.of<UserfavoritesCubit>(context);
+    isAddToFavorites = await _userFavCubit
+        .addUserFavorites(estateId, userId)
+        .then((value) => value);
+    setState(() {
+      isAddToFavorites = isAddToFavorites;
+      selectedEstateId = estateId;
+    });
   }
 }
