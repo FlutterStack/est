@@ -21,6 +21,7 @@ import 'menu/menuDashboard.dart';
 import 'package:expert_properties/maincreens/estate_details.dart';
 import 'package:expert_properties/maincreens/user_favorites.dart';
 import 'package:expert_properties/SignupScreen/SignupScreen.dart';
+import 'package:expert_properties/SignupScreen/updateuser.dart';
 
 class Routes {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -53,6 +54,8 @@ class Routes {
         return MaterialPageRoute(builder: (_) => UserFavorites());
       case '/signup':
         return MaterialPageRoute(builder: (_) => SignUp());
+      case '/user/profile':
+        return MaterialPageRoute(builder: (_) => UpdateUserInfo());
     }
   }
 

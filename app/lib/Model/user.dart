@@ -7,9 +7,10 @@ class User extends Equatable {
   final String email;
   final String mobileNo;
   final String password;
+  final String imgpath;
 
   User(this.userId, this.firstName, this.lastName, this.email, this.mobileNo,
-      this.password);
+      this.password, this.imgpath);
 
   factory User.fromJson(Map<String, dynamic> map) {
     return User(
@@ -19,12 +20,13 @@ class User extends Equatable {
       map['email'],
       map['mobile_no'],
       map['password'],
+      map["img_path"],
     );
   }
   @override
   // TODO: implement props
   List<Object> get props =>
-      [userId, firstName, lastName, email, mobileNo, password];
+      [userId, firstName, lastName, email, mobileNo, password, imgpath];
 
   @override
   String toString() {

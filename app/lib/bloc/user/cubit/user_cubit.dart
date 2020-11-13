@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:expert_properties/Model/ProposalModel.dart';
 import 'package:expert_properties/Model/user.dart';
+import 'package:expert_properties/SignupScreen/updateuser.dart';
 import 'package:expert_properties/bloc/user/repository/user_repository.dart';
 import 'package:meta/meta.dart';
 
@@ -46,6 +47,19 @@ class UserCubit extends Cubit<UserState> {
     try {
       final isRegistrationSuccess = await _userRepository.registerUser(info);
       return isRegistrationSuccess;
+    } on Exception {
+      print("Unable to register user");
+    }
+  }
+
+  Future<bool> updateUser(Map<String, dynamic> info, User user) async {
+    try {
+      final isUpdateSuccess = await _userRepository.updateUserInfo(info);
+      if (isUpdateSuccess == true) {
+        emit(UserUpdate(user));
+      } else {
+        return null;
+      }
     } on Exception {
       print("Unable to register user");
     }

@@ -31,6 +31,9 @@ class _AppDrawerState extends State<AppDrawer> {
         } else if (state is UserLoaded) {
           user = state.user;
           return loadDrawer();
+        } else if (state is UserUpdate) {
+          user = state.user;
+          return loadDrawer();
         }
       },
     ));
@@ -86,10 +89,11 @@ class _AppDrawerState extends State<AppDrawer> {
                           leading: Icon(Icons.person),
                           onTap: () {
                             // Navigator.pushNamedAndRemoveUntil(
-                            //     context,
-                            //     '/customer/editprofile',
-                            //     ModalRoute.withName(
-                            //         '/customer/customerhomescreen'));
+                            //   context,
+                            //   '/user/profile',
+                            //   ModalRoute.withName('/login'),
+                            // );
+                            Navigator.pushNamed(context, '/user/profile');
                           },
                           dense: true,
                           title: Text('Profile',

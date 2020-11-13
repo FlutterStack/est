@@ -48,4 +48,29 @@ class UserRepository {
       print("Unable to register user");
     }
   }
+
+  Future<bool> updateUserInfo(Map<String, dynamic> info) async {
+    try {
+      var body = Map<String, dynamic>();
+      body["userId"] = info["userId"];
+      body["firstname"] = info["firstname"];
+      body["lastname"] = info["lastname"];
+      body["email"] = info["email"];
+      body["mobile"] = info["mobile"];
+      body["password"] = info["password"];
+
+      String url = utils.getEndPoint('api/v1/user/update');
+      var response = await http.post(url, body: body);
+      if (response.statusCode == 200) {
+        var data = json.decode(response.body);
+        if (data == status_code_success.toString()) {
+          return true;
+        } else {
+          return false;
+        }
+      }
+    } catch (e) {
+      print("Unable to update user");
+    }
+  }
 }

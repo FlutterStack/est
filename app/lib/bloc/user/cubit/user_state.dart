@@ -34,3 +34,12 @@ class UserError extends UserState {
   // TODO: implement props
   List<Object> get props => [];
 }
+
+class UserUpdate extends UserState {
+  final User user;
+  const UserUpdate(this.user);
+
+  @override
+  // TODO: implement props
+  List<Object> get props => [user];
+}
