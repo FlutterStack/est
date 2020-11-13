@@ -1,3 +1,4 @@
+import 'package:expert_properties/SignupScreen/signup.dart';
 import 'package:expert_properties/maincreens/estates.dart';
 import 'package:flutter/material.dart';
 import 'package:expert_properties/menu/menuDashboard.dart';
@@ -19,6 +20,7 @@ import 'maincreens/to_sell_page.dart';
 import 'menu/menuDashboard.dart';
 import 'package:expert_properties/maincreens/estate_details.dart';
 import 'package:expert_properties/maincreens/user_favorites.dart';
+import 'package:expert_properties/SignupScreen/SignupScreen.dart';
 
 class Routes {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -49,6 +51,8 @@ class Routes {
         return MaterialPageRoute(builder: (_) => EstateDetails(args));
       case '/user/favorites':
         return MaterialPageRoute(builder: (_) => UserFavorites());
+      case '/signup':
+        return MaterialPageRoute(builder: (_) => SignUp());
     }
   }
 

@@ -15,6 +15,8 @@ app.group("/api/v1", (router) => {
     router.post('/estate/info', Estate.getEstateInfo);
     router.post('/user/favorites/save', Estate.addUserFavorites);
     router.post('/user/favorites/all', Estate.getUserFavorites);
+    router.post('/user/register', User.registerUser);
+    router.post('/user/update', User.updateUser);
 });
 
 

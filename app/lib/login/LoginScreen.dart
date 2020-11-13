@@ -50,7 +50,7 @@ class LoginScreenState extends State<LoginScreen> {
     _medium = ResponsiveWidget.isScreenMedium(_width, _pixelRatio);
 
     return Scaffold(
-      backgroundColor: Colors.red,
+      backgroundColor: Colors.red[400],
       key: _scaffoldKey,
       body: BlocConsumer<UserCubit, UserState>(
         listener: (context, state) {
@@ -174,9 +174,14 @@ class LoginScreenState extends State<LoginScreen> {
             SizedBox(
               height: 15,
             ),
-            Container(
-              alignment: Alignment.center,
-              width: MediaQuery.of(context).size.width,
+            FlatButton(
+              onPressed: () {
+                Navigator.pushNamedAndRemoveUntil(
+                  context,
+                  '/signup',
+                  ModalRoute.withName('/login'),
+                );
+              },
               child: Text(
                 'Fist time here? SignUp',
                 style: TextStyle(fontWeight: FontWeight.w600),
@@ -199,8 +204,6 @@ class LoginScreenState extends State<LoginScreen> {
   void performLogin() async {
     final UserCubit _userCubit = BlocProvider.of<UserCubit>(context);
     _userCubit.getUser(_txtEmail.text, _txtPassword.text);
-
-    print('LALA ' + user.toString());
   }
 
   /////////////////////

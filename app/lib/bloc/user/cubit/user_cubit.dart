@@ -41,4 +41,13 @@ class UserCubit extends Cubit<UserState> {
       emit(UserError("Error, failed to sign in the user"));
     }
   }
+
+  Future<bool> registerUser(Map<String, dynamic> info) async {
+    try {
+      final isRegistrationSuccess = await _userRepository.registerUser(info);
+      return isRegistrationSuccess;
+    } on Exception {
+      print("Unable to register user");
+    }
+  }
 }

@@ -30,4 +30,47 @@ User.findByEmail = (email, password, result) => {
     });
 }
 
+User.registerUser = (firstName, lastName, email, mobile, password, imgpath, result) => {
+    var sqlIns = "";
+    sqlIns = sqlIns + " INSERT INTO users SET first_name=?, last_name=?, email=?, mobile_no=?, password=?, img_path=?";
+
+    console.log('QUERY ' + sqlIns);
+    dbcon.query(sqlIns, [firstName, lastName, email, mobile, password, imgpath], (err, res) => {
+        if(err) {
+            console.log("Unable to register user");
+            result(err, null);
+            console.log(err);
+            return;
+        } else if(res) {
+            console.log('Success insert');
+            var statuscode = 0;
+            result(null, statuscode.toString());
+            return;
+        }
+        result({data: null}, null);
+    });
+}
+
+User.updateUserInfo = (firstName, lastName, email, mobile, password, imgpath, userId, result) => {
+    var sqlUpd = "";
+    sqlUpd = sqlUpd + " UPDATE users SET first_name=?, last_name=?, email=?, mobile_no=?, password=?, img_path=?";
+    sqlUpd = sqlUpd + " WHERE idusers=?";
+
+    console.log('QUERY ' + sqlUpd);
+    dbcon.query(sqlUpd, [firstName, lastName, email, mobile, password, imgpath, userId], (err, res) => {
+        if(err) {
+            console.log("Unable to register user");
+            result(err, null);
+            console.log(err);
+            return;
+        } else if(res) {
+            console.log('Success update');
+            var statuscode = 0;
+            result(null, statuscode.toString());
+            return;
+        }
+        result({data: null}, null);
+    });
+}
+
 module.exports = User;
