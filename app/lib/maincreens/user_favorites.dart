@@ -52,6 +52,26 @@ class _UserFavoritesState extends State<UserFavorites> {
                   }
                 },
               );
+            } else if (state is UserUpdate) {
+              final UserfavoritesCubit _userFavCubit =
+                  BlocProvider.of<UserfavoritesCubit>(context);
+              _userFavCubit.getAllUserFavorites(state.user.userId);
+              return BlocBuilder<UserfavoritesCubit, UserfavoritesState>(
+                builder: (context, state) {
+                  if (state is UserfavoritesInitial) {
+                    return favoriteInitial();
+                  } else if (state is UserFavoritesLoading) {
+                    return favLoading();
+                  } else if (state is UserFavoritesLoaded) {
+                    selectedItems.clear();
+                    selectedItems =
+                        state.userFav.map((e) => e.estateId).toList();
+                    return loadFavorites(state.userFav);
+                  } else if (state is UserFavoritesError) {
+                    return favError();
+                  }
+                },
+              );
             }
           },
         ),

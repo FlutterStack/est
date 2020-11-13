@@ -58,91 +58,95 @@ class _EstateDetailsState extends State<EstateDetails> {
         backgroundColor: Colors.red[400],
         title: Text('Details'),
       ),
-      body: Column(
-        children: [
-          loadDetails(),
-          Container(
-            padding: EdgeInsets.all(20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    this.widget.details['details'].name,
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            loadDetails(),
+            Container(
+              padding: EdgeInsets.all(20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      this.widget.details['details'].name,
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+                    ),
                   ),
-                ),
-                Container(
-                  alignment: Alignment.centerLeft,
-                  margin: EdgeInsets.only(top: 10),
-                  child: Text(
-                    this.widget.details['details'].description,
-                    style: TextStyle(fontSize: 13),
+                  Container(
+                    alignment: Alignment.centerLeft,
+                    margin: EdgeInsets.only(top: 10),
+                    child: Text(
+                      this.widget.details['details'].description,
+                      style: TextStyle(fontSize: 13),
+                    ),
                   ),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                Divider(
-                  color: Colors.white,
-                ),
-                Container(
-                  margin: EdgeInsets.only(top: 20),
-                  child: Text(
-                    "House Information",
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
+                  SizedBox(
+                    height: 20,
                   ),
-                ),
-                Container(
-                  margin: EdgeInsets.only(top: 15),
-                  height: 110,
-                  child: ListView.builder(
-                    shrinkWrap: false,
-                    scrollDirection: Axis.horizontal,
-                    itemCount: 5,
-                    itemBuilder: (context, index) {
-                      return Padding(
-                        padding: const EdgeInsets.only(left: 10),
-                        child: Container(
-                          width: 100,
-                          decoration: BoxDecoration(
-                            color: Colors.red,
-                            border: Border.all(color: Colors.white),
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          padding: EdgeInsets.all(10),
-                          margin: EdgeInsets.all(10),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Text(
-                                details[0][detailProps[index]].toString(),
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 25,
-                                    fontWeight: FontWeight.w600),
-                              ),
-                              Container(
-                                alignment: Alignment.center,
-                                child: Text(
-                                  descProps[index],
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(color: Colors.white),
+                  Divider(
+                    color: Colors.white,
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(top: 20),
+                    child: Text(
+                      "House Information",
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(top: 15),
+                    height: 110,
+                    child: ListView.builder(
+                      shrinkWrap: false,
+                      scrollDirection: Axis.horizontal,
+                      itemCount: 5,
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: const EdgeInsets.only(left: 10),
+                          child: Container(
+                            width: 100,
+                            decoration: BoxDecoration(
+                              color: Colors.red,
+                              border: Border.all(color: Colors.white),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            padding: EdgeInsets.all(10),
+                            margin: EdgeInsets.all(10),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text(
+                                  details[0][detailProps[index]].toString(),
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 25,
+                                      fontWeight: FontWeight.w600),
                                 ),
-                              )
-                            ],
+                                Container(
+                                  alignment: Alignment.center,
+                                  child: Text(
+                                    descProps[index],
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(color: Colors.white),
+                                  ),
+                                )
+                              ],
+                            ),
                           ),
-                        ),
-                      );
-                    },
+                        );
+                      },
+                    ),
                   ),
-                ),
-              ],
-            ),
-          )
-        ],
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

@@ -36,145 +36,147 @@ class _SignUpState extends State<SignUp> {
       key: _scaffoldKey,
       body: Container(
         height: MediaQuery.of(context).size.height,
-        child: Container(
-          padding: EdgeInsets.all(40),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                width: 220,
-                margin: EdgeInsets.only(
-                    top: MediaQuery.of(context).size.height * .11),
-                child: Text(
-                  'Hey! Sign Up',
-                  style: TextStyle(fontSize: 50, fontWeight: FontWeight.w900),
+        child: SingleChildScrollView(
+          child: Container(
+            padding: EdgeInsets.all(40),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  width: 220,
+                  margin: EdgeInsets.only(
+                      top: MediaQuery.of(context).size.height * .11),
+                  child: Text(
+                    'Hey! Sign Up',
+                    style: TextStyle(fontSize: 50, fontWeight: FontWeight.w900),
+                  ),
                 ),
-              ),
-              Column(
-                children: [
-                  SizedBox(
-                    height: 50,
-                  ),
-                  TextField(
-                    controller: _txtFirstname,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.white),
-                      ),
-                      labelText: 'Enter Firstname',
-                      labelStyle: TextStyle(color: Colors.white),
-                      prefixIcon: Icon(
-                        Icons.person,
-                        color: Colors.white,
+                Column(
+                  children: [
+                    SizedBox(
+                      height: 50,
+                    ),
+                    TextField(
+                      controller: _txtFirstname,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.white),
+                        ),
+                        labelText: 'Enter Firstname',
+                        labelStyle: TextStyle(color: Colors.white),
+                        prefixIcon: Icon(
+                          Icons.person,
+                          color: Colors.white,
+                        ),
                       ),
                     ),
-                  ),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  TextField(
-                    controller: _txtLastname,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.white),
-                      ),
-                      labelText: 'Enter Lastname',
-                      labelStyle: TextStyle(color: Colors.white),
-                      prefixIcon: Icon(
-                        Icons.person,
-                        color: Colors.white,
+                    SizedBox(
+                      height: 15,
+                    ),
+                    TextField(
+                      controller: _txtLastname,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.white),
+                        ),
+                        labelText: 'Enter Lastname',
+                        labelStyle: TextStyle(color: Colors.white),
+                        prefixIcon: Icon(
+                          Icons.person,
+                          color: Colors.white,
+                        ),
                       ),
                     ),
-                  ),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  TextField(
-                    controller: _txtEmail,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.white),
-                      ),
-                      labelText: 'Email',
-                      labelStyle: TextStyle(color: Colors.white),
-                      prefixIcon: Icon(
-                        Icons.email,
-                        color: Colors.white,
+                    SizedBox(
+                      height: 15,
+                    ),
+                    TextField(
+                      controller: _txtEmail,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.white),
+                        ),
+                        labelText: 'Email',
+                        labelStyle: TextStyle(color: Colors.white),
+                        prefixIcon: Icon(
+                          Icons.email,
+                          color: Colors.white,
+                        ),
                       ),
                     ),
-                  ),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  TextField(
-                    controller: _txtMobile,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.white),
-                      ),
-                      labelText: 'Mobile No.',
-                      labelStyle: TextStyle(color: Colors.white),
-                      prefixIcon: Icon(
-                        Icons.phone,
-                        color: Colors.white,
+                    SizedBox(
+                      height: 15,
+                    ),
+                    TextField(
+                      controller: _txtMobile,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.white),
+                        ),
+                        labelText: 'Mobile No.',
+                        labelStyle: TextStyle(color: Colors.white),
+                        prefixIcon: Icon(
+                          Icons.phone,
+                          color: Colors.white,
+                        ),
                       ),
                     ),
-                  ),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  TextField(
-                    controller: _txtPassword,
-                    obscureText: true,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.white),
-                      ),
-                      labelText: 'Enter Password',
-                      labelStyle: TextStyle(color: Colors.white),
-                      prefixIcon: Icon(
-                        Icons.lock,
-                        color: Colors.white,
+                    SizedBox(
+                      height: 15,
+                    ),
+                    TextField(
+                      controller: _txtPassword,
+                      obscureText: true,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.white),
+                        ),
+                        labelText: 'Enter Password',
+                        labelStyle: TextStyle(color: Colors.white),
+                        prefixIcon: Icon(
+                          Icons.lock,
+                          color: Colors.white,
+                        ),
                       ),
                     ),
-                  ),
-                  SizedBox(
-                    height: 30,
-                  ),
-                  Container(
-                    width: MediaQuery.of(context).size.width,
-                    child: RaisedButton(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30.0),
+                    SizedBox(
+                      height: 30,
+                    ),
+                    Container(
+                      width: MediaQuery.of(context).size.width,
+                      child: RaisedButton(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30.0),
+                        ),
+                        padding: EdgeInsets.all(20),
+                        color: Colors.red[700],
+                        onPressed: () {
+                          performSignUp();
+                        },
+                        child: Text(
+                          'SIGN UP',
+                          style: TextStyle(
+                              fontSize: 15, fontWeight: FontWeight.w700),
+                        ),
                       ),
-                      padding: EdgeInsets.all(20),
-                      color: Colors.red[700],
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    FlatButton(
                       onPressed: () {
-                        performSignUp();
+                        Navigator.pushNamedAndRemoveUntil(
+                          context,
+                          '/login',
+                          ModalRoute.withName('/signup'),
+                        );
                       },
-                      child: Text(
-                        'SIGN UP',
-                        style: TextStyle(
-                            fontSize: 15, fontWeight: FontWeight.w700),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  FlatButton(
-                    onPressed: () {
-                      Navigator.pushNamedAndRemoveUntil(
-                        context,
-                        '/login',
-                        ModalRoute.withName('/signup'),
-                      );
-                    },
-                    child: Text('Already have an account? Login'),
-                  )
-                ],
-              )
-            ],
+                      child: Text('Already have an account? Login'),
+                    )
+                  ],
+                )
+              ],
+            ),
           ),
         ),
       ),

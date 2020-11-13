@@ -42,42 +42,44 @@ class _UpdateUserInfoState extends State<UpdateUserInfo> {
       ),
       backgroundColor: Color.fromRGBO(66, 66, 66, 0.9),
       key: _scaffoldKey,
-      body: Container(
-        height: MediaQuery.of(context).size.height,
+      body: SingleChildScrollView(
         child: Container(
-          padding: EdgeInsets.all(40),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // Container(
-              //   width: 300,
-              //   margin: EdgeInsets.only(
-              //       top: MediaQuery.of(context).size.height * .10),
-              //   child: Text(
-              //     'Hey! View your profile',
-              //     style: TextStyle(fontSize: 50, fontWeight: FontWeight.w900),
-              //   ),
-              // ),
-              Center(
-                child: Container(
-                  margin: EdgeInsets.only(top: 30),
-                  width: 300,
-                  child: Icon(
-                    Icons.person,
-                    size: 100,
+          height: MediaQuery.of(context).size.height,
+          child: Container(
+            padding: EdgeInsets.all(40),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Container(
+                //   width: 300,
+                //   margin: EdgeInsets.only(
+                //       top: MediaQuery.of(context).size.height * .10),
+                //   child: Text(
+                //     'Hey! View your profile',
+                //     style: TextStyle(fontSize: 50, fontWeight: FontWeight.w900),
+                //   ),
+                // ),
+                Center(
+                  child: Container(
+                    margin: EdgeInsets.only(top: 30),
+                    width: 300,
+                    child: Icon(
+                      Icons.person,
+                      size: 100,
+                    ),
                   ),
                 ),
-              ),
-              BlocBuilder<UserCubit, UserState>(
-                builder: (context, state) {
-                  if (state is UserLoaded) {
-                    return loadUser(state.user);
-                  } else if (state is UserUpdate) {
-                    return loadUser(state.user);
-                  }
-                },
-              )
-            ],
+                BlocBuilder<UserCubit, UserState>(
+                  builder: (context, state) {
+                    if (state is UserLoaded) {
+                      return loadUser(state.user);
+                    } else if (state is UserUpdate) {
+                      return loadUser(state.user);
+                    }
+                  },
+                )
+              ],
+            ),
           ),
         ),
       ),

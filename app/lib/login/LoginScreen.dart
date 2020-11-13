@@ -83,111 +83,113 @@ class LoginScreenState extends State<LoginScreen> {
   //initialLogin
   Widget initialLogin() {
     return Center(
-      child: Container(
-        padding: EdgeInsets.all(30),
-        child: Column(
-          children: [
-            SizedBox(
-              height: 50,
-            ),
-            CircleAvatar(
-              radius: 160,
-              backgroundColor: Colors.white10,
-              child: CircleAvatar(
-                radius: 140,
-                backgroundColor: Colors.white12,
+      child: SingleChildScrollView(
+        child: Container(
+          padding: EdgeInsets.all(30),
+          child: Column(
+            children: [
+              SizedBox(
+                height: 50,
+              ),
+              CircleAvatar(
+                radius: 160,
+                backgroundColor: Colors.white10,
                 child: CircleAvatar(
-                  radius: 120,
-                  backgroundColor: Colors.white24,
+                  radius: 140,
+                  backgroundColor: Colors.white12,
                   child: CircleAvatar(
-                    radius: 100,
-                    backgroundImage: AssetImage('assets/images/logob.jpg'),
+                    radius: 120,
+                    backgroundColor: Colors.white24,
+                    child: CircleAvatar(
+                      radius: 100,
+                      backgroundImage: AssetImage('assets/images/logob.jpg'),
+                    ),
                   ),
                 ),
               ),
-            ),
-            SizedBox(
-              height: 50,
-            ),
-            TextFormField(
-              controller: _txtEmail,
-              decoration: InputDecoration(
-                border: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.white60),
-                ),
-                labelText: "Enter Email",
-                labelStyle: TextStyle(color: Colors.white),
-                prefixIcon: Icon(
-                  Icons.email,
-                  color: Colors.white,
+              SizedBox(
+                height: 50,
+              ),
+              TextFormField(
+                controller: _txtEmail,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.white60),
+                  ),
+                  labelText: "Enter Email",
+                  labelStyle: TextStyle(color: Colors.white),
+                  prefixIcon: Icon(
+                    Icons.email,
+                    color: Colors.white,
+                  ),
                 ),
               ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            TextFormField(
-              controller: _txtPassword,
-              obscureText: true,
-              decoration: InputDecoration(
-                border: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.white),
-                ),
-                labelText: "Enter Password",
-                labelStyle: TextStyle(color: Colors.white),
-                prefixIcon: Icon(
-                  Icons.lock,
-                  color: Colors.white,
+              SizedBox(
+                height: 20,
+              ),
+              TextFormField(
+                controller: _txtPassword,
+                obscureText: true,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.white),
+                  ),
+                  labelText: "Enter Password",
+                  labelStyle: TextStyle(color: Colors.white),
+                  prefixIcon: Icon(
+                    Icons.lock,
+                    color: Colors.white,
+                  ),
                 ),
               ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Container(
-              alignment: Alignment.centerRight,
-              width: MediaQuery.of(context).size.width,
-              child: Text('Forgot Password?'),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Container(
-              width: MediaQuery.of(context).size.width,
-              margin: EdgeInsets.only(top: 20.0),
-              child: RaisedButton(
-                shape: RoundedRectangleBorder(
-                  side: BorderSide(color: Colors.black12),
-                  borderRadius: BorderRadius.circular(25.0),
+              SizedBox(
+                height: 20,
+              ),
+              Container(
+                alignment: Alignment.centerRight,
+                width: MediaQuery.of(context).size.width,
+                child: Text('Forgot Password?'),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Container(
+                width: MediaQuery.of(context).size.width,
+                margin: EdgeInsets.only(top: 20.0),
+                child: RaisedButton(
+                  shape: RoundedRectangleBorder(
+                    side: BorderSide(color: Colors.black12),
+                    borderRadius: BorderRadius.circular(25.0),
+                  ),
+                  color: Colors.red[900],
+                  onPressed: () {
+                    performLogin();
+                  },
+                  child: Text(
+                    "LOGIN",
+                    style: TextStyle(fontWeight: FontWeight.w700),
+                  ),
+                  padding: EdgeInsets.all(20.0),
                 ),
-                color: Colors.red[900],
+              ),
+              SizedBox(
+                height: 15,
+              ),
+              FlatButton(
                 onPressed: () {
-                  performLogin();
+                  Navigator.pushNamedAndRemoveUntil(
+                    context,
+                    '/signup',
+                    ModalRoute.withName('/login'),
+                  );
                 },
                 child: Text(
-                  "LOGIN",
-                  style: TextStyle(fontWeight: FontWeight.w700),
+                  'Fist time here? SignUp',
+                  style: TextStyle(fontWeight: FontWeight.w600),
                 ),
-                padding: EdgeInsets.all(20.0),
               ),
-            ),
-            SizedBox(
-              height: 15,
-            ),
-            FlatButton(
-              onPressed: () {
-                Navigator.pushNamedAndRemoveUntil(
-                  context,
-                  '/signup',
-                  ModalRoute.withName('/login'),
-                );
-              },
-              child: Text(
-                'Fist time here? SignUp',
-                style: TextStyle(fontWeight: FontWeight.w600),
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
