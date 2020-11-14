@@ -178,6 +178,94 @@ class _EstateState extends State<Estate> {
                           }
                         },
                       );
+                    } else if (state is UserUpdate) {
+                      user = state.user;
+                      return BlocBuilder<UserfavoritesCubit,
+                          UserfavoritesState>(
+                        builder: (context, state) {
+                          if (state is UserFavoritesLoaded) {
+                            print("USER FAV LOADED");
+                            selectedItems.clear();
+                            selectedItems =
+                                state.userFav.map((e) => e.estateId).toList();
+                            print('SELECTED ITEMS' + selectedItems.toString());
+                            return BlocBuilder<EstateCubit, EstateState>(
+                              builder: (context, state) {
+                                if (state is EstateInitial) {
+                                  print("Initializing estate");
+                                  return initialEstate();
+                                } else if (state is EstateLoading) {
+                                  print("Loading State");
+                                  return loadingEstate();
+                                } else if (state is EstateLoaded) {
+                                  print("Loaded State");
+                                  return loadEstates(state.estate);
+                                } else if (state is EstateError) {
+                                  print("EstateError");
+                                  return emptyEstates();
+                                }
+                              },
+                            );
+                          } else if (state is UserfavoritesInitial) {
+                            print("USER Initial");
+                            return BlocBuilder<EstateCubit, EstateState>(
+                              builder: (context, state) {
+                                if (state is EstateInitial) {
+                                  print("Initializing estate");
+                                  return initialEstate();
+                                } else if (state is EstateLoading) {
+                                  print("Loading State");
+                                  return loadingEstate();
+                                } else if (state is EstateLoaded) {
+                                  print("Loaded State");
+                                  return loadEstates(state.estate);
+                                } else if (state is EstateError) {
+                                  print("EstateError");
+                                  return emptyEstates();
+                                }
+                              },
+                            );
+                          } else if (state is UserFavoritesLoading) {
+                            print("USER FAV LOADING");
+                            return BlocBuilder<EstateCubit, EstateState>(
+                              builder: (context, state) {
+                                if (state is EstateInitial) {
+                                  print("Initializing estate");
+                                  return initialEstate();
+                                } else if (state is EstateLoading) {
+                                  print("Loading State");
+                                  return loadingEstate();
+                                } else if (state is EstateLoaded) {
+                                  print("Loaded State");
+                                  return loadEstates(state.estate);
+                                } else if (state is EstateError) {
+                                  print("EstateError");
+                                  return emptyEstates();
+                                }
+                              },
+                            );
+                          } else if (state is UserFavoritesError) {
+                            print("USER FAV Error");
+                            return BlocBuilder<EstateCubit, EstateState>(
+                              builder: (context, state) {
+                                if (state is EstateInitial) {
+                                  print("Initializing estate");
+                                  return initialEstate();
+                                } else if (state is EstateLoading) {
+                                  print("Loading State");
+                                  return loadingEstate();
+                                } else if (state is EstateLoaded) {
+                                  print("Loaded State");
+                                  return loadEstates(state.estate);
+                                } else if (state is EstateError) {
+                                  print("EstateError");
+                                  return emptyEstates();
+                                }
+                              },
+                            );
+                          }
+                        },
+                      );
                     }
                   },
                 )),
