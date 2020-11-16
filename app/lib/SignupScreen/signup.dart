@@ -47,7 +47,7 @@ class _SignUpState extends State<SignUp> {
                   margin: EdgeInsets.only(
                       top: MediaQuery.of(context).size.height * .11),
                   child: Text(
-                    'Hey! Sign Up',
+                    'Sign Up',
                     style: TextStyle(fontSize: 50, fontWeight: FontWeight.w900),
                   ),
                 ),
@@ -171,7 +171,7 @@ class _SignUpState extends State<SignUp> {
                           ModalRoute.withName('/signup'),
                         );
                       },
-                      child: Text('Already have an account? Login'),
+                      child: Text('Back to Login'),
                     )
                   ],
                 )

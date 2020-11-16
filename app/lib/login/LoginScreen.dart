@@ -184,7 +184,7 @@ class LoginScreenState extends State<LoginScreen> {
                   );
                 },
                 child: Text(
-                  'Fist time here? SignUp',
+                  'First time here? SignUp',
                   style: TextStyle(fontWeight: FontWeight.w600),
                 ),
               ),
