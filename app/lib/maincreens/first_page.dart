@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../components/iconText_button.dart';
-// import 'package:foldable_sidebar/foldable_sidebar.dart';
+
 
 class FirstPage extends StatefulWidget {
   FirstPage(context);
@@ -58,14 +58,7 @@ class _FirstPageState extends State<FirstPage> {
             'Choose Property',
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
-          actions: <Widget>[
-            IconButton(
-              icon: Icon(Icons.search),
-              iconSize: 30.0,
-              color: Colors.white,
-              onPressed: () {},
-            ),
-          ],
+         
         ),
         drawer: AppDrawer(),
         body: Container(
@@ -178,85 +171,3 @@ class _FirstPageState extends State<FirstPage> {
   }
 }
 
-// Material(
-//           color: Color(0x00ed0e0d),
-//           animationDuration: duration,
-//           borderRadius: BorderRadius.all(Radius.circular(10.0)),
-//           elevation: 8,
-//           child: Center(
-//             child: Expanded(
-//               child: Column(
-//                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-//                 crossAxisAlignment: CrossAxisAlignment.stretch,
-//                 children: <Widget>[
-//                   Expanded(
-//                     flex: 5,
-//                     child: BgCard(
-//                       colour:
-//                           kActiveBgCardColor, // any changes, change in constants.dart
-//                       cardChild: Column(
-//                         mainAxisAlignment: MainAxisAlignment.center,
-//                         crossAxisAlignment: CrossAxisAlignment.baseline,
-//                         textBaseline: TextBaseline.alphabetic,
-//                         children: <Widget>[
-//                           Expanded(
-//                             child: BgCard(
-//                               colour:
-//                                   kButtonContainerColor, // any changes, change in constants.dart
-//                               cardChild: IconTextButton(
-//                                 icon: FontAwesomeIcons.warehouse,
-//                                 text: 'Residential',
-//                               ),
-//                               onPress: () {
-//                                 Navigator.pushNamed(context, '/residential');
-//                               },
-//                             ),
-//                           ),
-//                           Expanded(
-//                             child: BgCard(
-//                               colour:
-//                                   kButtonContainerColor, // any changes, change in constants.dart
-//                               cardChild: IconTextButton(
-//                                 icon: FontAwesomeIcons.home,
-//                                 text: 'Commercial',
-//                               ),
-//                               onPress: () {
-//                                 Navigator.pushNamed(context, '/commercial');
-//                               },
-//                             ),
-//                           ),
-//                           Expanded(
-//                             child: BgCard(
-//                               colour:
-//                                   kButtonContainerColor, // any changes, change in constants.dart
-//                               cardChild: IconTextButton(
-//                                 icon: FontAwesomeIcons.shopware,
-//                                 text: 'Industrial',
-//                               ),
-//                               onPress: () {
-//                                 Navigator.pushNamed(context, '/industrial');
-//                               },
-//                             ),
-//                           ),
-//                           Expanded(
-//                             child: BgCard(
-//                               colour:
-//                                   kButtonContainerColor, //  any changes, change in constants.dart
-//                               cardChild: IconTextButton(
-//                                 icon: FontAwesomeIcons.mountain,
-//                                 text: 'Agricultural',
-//                               ),
-//                               onPress: () {
-//                                 Navigator.pushNamed(context, '/agricultural');
-//                               },
-//                             ),
-//                           ),
-//                         ],
-//                       ),
-//                     ),
-//                   ),
-//                 ],
-//               ),
-//             ),
-//           ),
-//         )

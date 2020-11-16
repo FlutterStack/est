@@ -7,7 +7,6 @@ import 'package:expert_properties/maincreens/commercial_page.dart';
 import 'package:expert_properties/maincreens/splash_screen.dart';
 import 'package:expert_properties/maincreens/residential_page.dart';
 import 'package:expert_properties/maincreens/to_sell_page.dart';
-import 'package:expert_properties/maincreens/splash_screen.dart';
 import 'package:expert_properties/maincreens/industrial_page.dart';
 import 'package:expert_properties/login/LoginScreen.dart';
 import 'maincreens/agricultural_page.dart';
@@ -20,7 +19,6 @@ import 'maincreens/to_sell_page.dart';
 import 'menu/menuDashboard.dart';
 import 'package:expert_properties/maincreens/estate_details.dart';
 import 'package:expert_properties/maincreens/user_favorites.dart';
-import 'package:expert_properties/SignupScreen/SignupScreen.dart';
 import 'package:expert_properties/SignupScreen/updateuser.dart';
 
 class Routes {

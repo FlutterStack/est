@@ -24,13 +24,11 @@ class User extends Equatable {
     );
   }
   @override
-  // TODO: implement props
   List<Object> get props =>
       [userId, firstName, lastName, email, mobileNo, password, imgpath];
 
   @override
   String toString() {
-    // TODO: implement toString
     return "User: {userId: $userId, firstName: $firstName, lastName: $lastName, email: $email, mobile: $mobileNo, password: $password}";
   }
 }

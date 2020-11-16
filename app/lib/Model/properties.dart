@@ -15,12 +15,10 @@ class Property extends Equatable {
     );
   }
   @override
-  // TODO: implement props
   List<Object> get props => [propertyId, propertyName, description];
 
   @override
   String toString() {
-    // TODO: implement toString
     return "Properties: {propertyId: $propertyId, name: $propertyName, description: $description}";
   }
 }

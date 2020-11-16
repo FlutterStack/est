@@ -11,7 +11,6 @@ import 'package:intro_slider/intro_slider.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'FadeAnimation.dart';
 
 class LoginScreen extends StatefulWidget {
   static String tag = GlobalStringText.tagLoginScreen;

@@ -9,7 +9,6 @@ import 'package:expert_properties/bloc/userfavorites/cubit/userfavorites_cubit.d
 import 'package:expert_properties/bloc/userfavorites/repository/userfavorites_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'maincreens/first_page.dart';
 import 'package:expert_properties/routes.dart';
 
 void main() => runApp(Properties());

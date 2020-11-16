@@ -24,12 +24,10 @@ class EstateInfo extends Equatable {
 
   @override
   String toString() {
-    // TODO: implement toString
     return "Estate: {estateId: $estateId, propertyId: $propertyId, name: $name, location: $location, description: $description, amount: $amount}";
   }
 
   @override
-  // TODO: implement props
   List<Object> get props => [
         estateId,
         propertyId,

@@ -9,7 +9,6 @@ class EstateInitial extends EstateState {
   const EstateInitial();
 
   @override
-  // TODO: implement props
   List<Object> get props => [];
 }
 
@@ -17,7 +16,6 @@ class EstateLoading extends EstateState {
   const EstateLoading();
 
   @override
-  // TODO: implement props
   List<Object> get props => [];
 }
 
@@ -26,7 +24,6 @@ class EstateLoaded extends EstateState {
   const EstateLoaded(this.estate);
 
   @override
-  // TODO: implement props
   List<Object> get props => [];
 }
 
@@ -35,6 +32,5 @@ class EstateError extends EstateState {
   const EstateError(this.msg);
 
   @override
-  // TODO: implement props
   List<Object> get props => [];
 }

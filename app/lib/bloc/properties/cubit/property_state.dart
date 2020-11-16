@@ -8,7 +8,6 @@ abstract class PropertyState extends Equatable {
 class PropertyInitial extends PropertyState {
   const PropertyInitial();
   @override
-  // TODO: implement props
   List<Object> get props => [];
 }
 
@@ -16,7 +15,6 @@ class PropertyLoading extends PropertyState {
   const PropertyLoading();
 
   @override
-  // TODO: implement props
   List<Object> get props => [];
 }
 
@@ -25,7 +23,6 @@ class PropertyLoaded extends PropertyState {
   const PropertyLoaded(this.property);
 
   @override
-  // TODO: implement props
   List<Object> get props => [];
 }
 
@@ -34,6 +31,5 @@ class PropertyError extends PropertyState {
   const PropertyError(this.msg);
 
   @override
-  // TODO: implement props
   List<Object> get props => [];
 }

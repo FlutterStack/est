@@ -8,9 +8,8 @@ import 'package:expert_properties/login/responsive_ui.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:intro_slider/intro_slider.dart';
+
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:dropdownfield/dropdownfield.dart';
 
 //----------------------------------------------------------------------------------------------//
 class SignupScreen extends StatefulWidget {
@@ -27,12 +26,12 @@ class SignupScreenState extends State<SignupScreen> {
   bool _large;
   bool _medium;
   ScrollController _scrollController = new ScrollController();
-  TextEditingController SignupFirstNameController = new TextEditingController();
-  TextEditingController SignupLastNameController = new TextEditingController();
-  TextEditingController SignupMobileNumberController =
+  TextEditingController signupFirstNameController = new TextEditingController();
+  TextEditingController signupLastNameController = new TextEditingController();
+  TextEditingController signupMobileNumberController =
       new TextEditingController();
-  TextEditingController SignupEmailController = new TextEditingController();
-  TextEditingController SignupPasswordController = new TextEditingController();
+  TextEditingController signupEmailController = new TextEditingController();
+  TextEditingController signupPasswordController = new TextEditingController();
   final FocusNode myFocusNodeFirstName = FocusNode();
   final FocusNode myFocusNodeLastName = FocusNode();
   final FocusNode myFocusNodeMobileNumber = FocusNode();
@@ -40,7 +39,7 @@ class SignupScreenState extends State<SignupScreen> {
   final FocusNode myFocusNodePassword = FocusNode();
   GlobalKey<FormState> _key = new GlobalKey();
   bool _validate = false;
-  String FirstName, LastName, MobileNumber, Email, Password, ConfirmPassword;
+  String firstName, lastName, mobileNumber, email, password, confirmPassword;
   var loading = true;
   String status = '';
   String errMessage = GlobalStringText.errMessage;
@@ -50,7 +49,7 @@ class SignupScreenState extends State<SignupScreen> {
   List<Company> _companies = Company.getCompanies();
   List<DropdownMenuItem<Company>> _dropdownMenuItems;
   Company _selectedCompany;
-  String GetDropDownValue = "";
+  String getDropDownValue = "";
   List<DropdownMenuItem<Company>> buildDropdownMenuItems(List companies) {
     List<DropdownMenuItem<Company>> items = List();
     for (Company company in companies) {
@@ -102,12 +101,12 @@ class SignupScreenState extends State<SignupScreen> {
             autovalidate: _validate,
             child: Column(
               children: <Widget>[
-                FormUI(),
+                formUI(),
                 SizedBox(
                   height: 15.0,
                 ),
-                FormTextField(),
-                FormBtnSignup(),
+                formTextField(),
+                formBtnSignup(),
               ],
             ),
           ),
@@ -117,7 +116,7 @@ class SignupScreenState extends State<SignupScreen> {
   }
 
 //----------------------------------------------------------------------------------------------//
-  Widget FormUI() {
+  Widget formUI() {
     return new Column(
       children: <Widget>[
         new Container(
@@ -131,7 +130,7 @@ class SignupScreenState extends State<SignupScreen> {
 //------------------------------------------------------------------------------------------------------------//
               new Container(
                 height: 300,
-                color: ColorCode.AppColorCode,
+                color: ColorCode.appColorCode,
                 child: Stack(
                   children: <Widget>[
                     Positioned(
@@ -203,7 +202,7 @@ class SignupScreenState extends State<SignupScreen> {
   }
 
 //------------------------------------------------------------------------------------------------------------//
-  Widget FormTextField() {
+  Widget formTextField() {
     return new Column(
       children: <Widget>[
         new FadeAnimation(
@@ -220,21 +219,21 @@ class SignupScreenState extends State<SignupScreen> {
 //------------------------------------------------------------------------------------------------------------//
                 new TextFormField(
                   focusNode: myFocusNodeFirstName,
-                  controller: SignupFirstNameController,
+                  controller: signupFirstNameController,
                   validator: validateFirstName,
                   onSaved: (String val) {
-                    FirstName = val;
+                    firstName = val;
                   },
                   decoration: new InputDecoration(
                     border: new OutlineInputBorder(),
                     hintText: 'Enter First Name',
                     hintStyle: TextStyle(
-                        fontSize: 12.0, color: ColorCode.BlackTextColorCode),
+                        fontSize: 12.0, color: ColorCode.blackTextColorCode),
                     //helperText: 'Keep it short, this is just a demo.',
                     labelText: 'First Name',
                     labelStyle: new TextStyle(
                         fontSize: 14.0,
-                        color: ColorCode.BlackTextColorCode,
+                        color: ColorCode.blackTextColorCode,
                         fontWeight: FontWeight.w300),
                     prefixIcon: const Icon(
                       Icons.person,
@@ -249,21 +248,21 @@ class SignupScreenState extends State<SignupScreen> {
 //------------------------------------------------------------------------------------------------------------//
                 TextFormField(
                   focusNode: myFocusNodeLastName,
-                  controller: SignupLastNameController,
+                  controller: signupLastNameController,
                   validator: validateLastName,
                   onSaved: (String val) {
-                    LastName = val;
+                    lastName = val;
                   },
                   decoration: new InputDecoration(
                     border: new OutlineInputBorder(),
                     hintText: 'Enter Last Name',
                     hintStyle: TextStyle(
-                        fontSize: 12.0, color: ColorCode.BlackTextColorCode),
+                        fontSize: 12.0, color: ColorCode.blackTextColorCode),
                     //helperText: 'Keep it short, this is just a demo.',
                     labelText: 'Last Name',
                     labelStyle: new TextStyle(
                         fontSize: 14.0,
-                        color: ColorCode.BlackTextColorCode,
+                        color: ColorCode.blackTextColorCode,
                         fontWeight: FontWeight.w300),
                     prefixIcon: const Icon(
                       Icons.person,
@@ -278,22 +277,22 @@ class SignupScreenState extends State<SignupScreen> {
 //------------------------------------------------------------------------------------------------------------//
                 new TextFormField(
                   focusNode: myFocusNodeMobileNumber,
-                  controller: SignupMobileNumberController,
+                  controller: signupMobileNumberController,
                   keyboardType: TextInputType.phone,
                   validator: validateMobile,
                   onSaved: (String val) {
-                    MobileNumber = val;
+                    mobileNumber = val;
                   },
                   decoration: new InputDecoration(
                     border: new OutlineInputBorder(),
                     hintText: 'Enter Mobile Number',
                     hintStyle: TextStyle(
-                        fontSize: 12.0, color: ColorCode.BlackTextColorCode),
+                        fontSize: 12.0, color: ColorCode.blackTextColorCode),
                     //helperText: 'Keep it short, this is just a demo.',
                     labelText: 'Mobile Number',
                     labelStyle: new TextStyle(
                         fontSize: 14.0,
-                        color: ColorCode.BlackTextColorCode,
+                        color: ColorCode.blackTextColorCode,
                         fontWeight: FontWeight.w300),
                     prefixIcon: const Icon(
                       Icons.phone_android,
@@ -308,21 +307,21 @@ class SignupScreenState extends State<SignupScreen> {
 //------------------------------------------------------------------------------------------------------------//
                 new TextFormField(
                   focusNode: myFocusNodeEmail,
-                  controller: SignupEmailController,
+                  controller: signupEmailController,
                   validator: validateEmail,
                   onSaved: (String val) {
-                    Email = val;
+                    email = val;
                   },
                   decoration: new InputDecoration(
                     border: new OutlineInputBorder(),
                     hintText: 'Enter Email',
                     hintStyle: TextStyle(
-                        fontSize: 12.0, color: ColorCode.BlackTextColorCode),
+                        fontSize: 12.0, color: ColorCode.blackTextColorCode),
                     //helperText: 'Keep it short, this is just a demo.',
                     labelText: 'Email Address',
                     labelStyle: new TextStyle(
                         fontSize: 14.0,
-                        color: ColorCode.BlackTextColorCode,
+                        color: ColorCode.blackTextColorCode,
                         fontWeight: FontWeight.w300),
                     prefixIcon: const Icon(
                       Icons.email,
@@ -339,20 +338,20 @@ class SignupScreenState extends State<SignupScreen> {
                   autocorrect: false,
                   obscureText: true,
                   focusNode: myFocusNodePassword,
-                  controller: SignupPasswordController,
+                  controller: signupPasswordController,
                   validator: (value) =>
                       value.isEmpty ? "Password can't be empty" : null,
-                  onSaved: (val) => Password = val,
+                  onSaved: (val) => password = val,
                   decoration: new InputDecoration(
                     border: new OutlineInputBorder(),
                     hintText: 'Enter Password',
                     hintStyle: TextStyle(
-                        fontSize: 12.0, color: ColorCode.BlackTextColorCode),
+                        fontSize: 12.0, color: ColorCode.blackTextColorCode),
                     //helperText: 'Keep it short, this is just a demo.',
                     labelText: 'Password',
                     labelStyle: new TextStyle(
                         fontSize: 14.0,
-                        color: ColorCode.BlackTextColorCode,
+                        color: ColorCode.blackTextColorCode,
                         fontWeight: FontWeight.w300),
                     prefixIcon: const Icon(
                       Icons.lock,
@@ -382,7 +381,7 @@ class SignupScreenState extends State<SignupScreen> {
                           onChanged: onChangeDropdownItem,
                           style: TextStyle(
                             fontSize: 14.0,
-                            color: ColorCode.BlackTextColorCode,
+                            color: ColorCode.blackTextColorCode,
                             fontWeight: FontWeight.w300,
                           ),
                         ),
@@ -397,7 +396,7 @@ class SignupScreenState extends State<SignupScreen> {
   }
 
 //--------------------------------------------------------------------------------------------------------------------------------//
-  Widget FormBtnSignup() {
+  Widget formBtnSignup() {
     return FadeAnimation(
       2,
       Container(
@@ -407,8 +406,8 @@ class SignupScreenState extends State<SignupScreen> {
               child: new FlatButton.icon(
                 shape: new RoundedRectangleBorder(
                     borderRadius: new BorderRadius.circular(18.0),
-                    side: BorderSide(color: ColorCode.AppColorCode)),
-                color: ColorCode.AppColorCode,
+                    side: BorderSide(color: ColorCode.appColorCode)),
+                color: ColorCode.appColorCode,
                 icon: Icon(
                   FontAwesomeIcons.registered,
                   color: Colors.white,
@@ -479,14 +478,14 @@ class SignupScreenState extends State<SignupScreen> {
   }
 
   //---------------------------------------------------------------------------------------------------//
-  String Signupurl = 'http://192.168.0.200/anuj/ATMA/Registration.php';
-  PostSignupData() {
-    http.post(Signupurl, body: {
-      "FirstName": SignupFirstNameController.text.toString(),
-      "LastName": SignupLastNameController.text.toString(),
-      "Email": SignupEmailController.text.toString(),
-      "Mobile": SignupMobileNumberController.text.toString(),
-      "Password": SignupPasswordController.text.toString(),
+  String signupurl = 'http://192.168.0.200/anuj/ATMA/Registration.php';
+  postSignupData() {
+    http.post(signupurl, body: {
+      "FirstName": signupFirstNameController.text.toString(),
+      "LastName": signupLastNameController.text.toString(),
+      "Email": signupEmailController.text.toString(),
+      "Mobile": signupMobileNumberController.text.toString(),
+      "Password": signupPasswordController.text.toString(),
       "Token": GlobalStringText.Token
     }).then((resultSignup) {
 //------------------------------------------------------------------------------------------------------------//
@@ -496,7 +495,7 @@ class SignupScreenState extends State<SignupScreen> {
       data = json.decode(resultSignup.body);
       if (!data['Status'] == true) {
         _displaySnackbar(context);
-        TrueAlert(context);
+        trueAlert(context);
         return;
       } else if (!data['Status'] == false) {
         _displaySnackbar(context);
@@ -521,7 +520,7 @@ class SignupScreenState extends State<SignupScreen> {
       // No any error in validation
       _key.currentState.save();
       print("true");
-      PostSignupData();
+      postSignupData();
     } else {
       // validation error
       setState(() {
@@ -532,7 +531,7 @@ class SignupScreenState extends State<SignupScreen> {
   }
 
   //--------------------------------------------------------------------------------------//
-  Future<void> TrueAlert(BuildContext context) async {
+  Future<void> trueAlert(BuildContext context) async {
     return showDialog<void>(
       context: context,
       barrierDismissible: false, // user must tap button!
@@ -543,7 +542,7 @@ class SignupScreenState extends State<SignupScreen> {
             textAlign: TextAlign.center,
             style: new TextStyle(
                 fontSize: 15.0,
-                color: ColorCode.AppColorCode,
+                color: ColorCode.appColorCode,
                 fontWeight: FontWeight.bold),
           ),
           content: SingleChildScrollView(
@@ -554,7 +553,7 @@ class SignupScreenState extends State<SignupScreen> {
                   textAlign: TextAlign.center,
                   style: new TextStyle(
                       fontSize: 12.0,
-                      color: ColorCode.AppColorCode,
+                      color: ColorCode.appColorCode,
                       fontWeight: FontWeight.bold),
                 ),
               ],
@@ -570,7 +569,7 @@ class SignupScreenState extends State<SignupScreen> {
                 GlobalStringText.ok,
                 style: new TextStyle(
                     fontSize: 15.0,
-                    color: ColorCode.AppColorCode,
+                    color: ColorCode.appColorCode,
                     fontWeight: FontWeight.bold),
               ),
             ),
@@ -592,7 +591,7 @@ class SignupScreenState extends State<SignupScreen> {
             textAlign: TextAlign.center,
             style: new TextStyle(
                 fontSize: 15.0,
-                color: ColorCode.AppColorCode,
+                color: ColorCode.appColorCode,
                 fontWeight: FontWeight.bold),
           ),
           content: SingleChildScrollView(
@@ -603,7 +602,7 @@ class SignupScreenState extends State<SignupScreen> {
                   textAlign: TextAlign.center,
                   style: new TextStyle(
                       fontSize: 12.0,
-                      color: ColorCode.AppColorCode,
+                      color: ColorCode.appColorCode,
                       fontWeight: FontWeight.bold),
                 ),
               ],
@@ -623,7 +622,7 @@ class SignupScreenState extends State<SignupScreen> {
                 GlobalStringText.ok,
                 style: new TextStyle(
                     fontSize: 15.0,
-                    color: ColorCode.AppColorCode,
+                    color: ColorCode.appColorCode,
                     fontWeight: FontWeight.bold),
               ),
             ),
@@ -639,9 +638,9 @@ class SignupScreenState extends State<SignupScreen> {
       duration: Duration(seconds: 1),
       content: Text(
         GlobalStringText.PleaseWait,
-        style: TextStyle(color: ColorCode.WhiteTextColorCode),
+        style: TextStyle(color: ColorCode.whiteTextColorCode),
       ),
-      backgroundColor: ColorCode.AppColorCode,
+      backgroundColor: ColorCode.appColorCode,
     ));
   }
 }

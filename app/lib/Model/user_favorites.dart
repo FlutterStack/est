@@ -36,12 +36,9 @@ class UserFav extends Equatable {
 
   @override
   String toString() {
-    // TODO: implement toString
     return "User Favorites: {favId: $favId, estateId: $estateId, userId: $userId, propertyId: $propertyId, name: $name, location: $location, description: $description, amount: $amount}";
   }
 
-  @override
-  // TODO: implement props
   List<Object> get props => [
         favId,
         estateId,

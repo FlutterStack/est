@@ -63,7 +63,7 @@ class _EstateState extends State<Estate> {
       ),
       body: Container(
         padding: EdgeInsets.all(20),
-        child: Column(
+        child: SingleChildScrollView(child: Column(
           children: [
             Container(
               margin: EdgeInsets.only(bottom: 10),
@@ -271,7 +271,7 @@ class _EstateState extends State<Estate> {
                 )),
           ],
         ),
-      ),
+      ),),
     );
   }
 

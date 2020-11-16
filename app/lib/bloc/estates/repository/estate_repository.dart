@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:expert_properties/Model/estate.dart';
 import 'package:http/http.dart' as http;
-import 'package:expert_properties/constants.dart';
+
 import 'package:expert_properties/utils.dart';
 
 class EstateRepository {

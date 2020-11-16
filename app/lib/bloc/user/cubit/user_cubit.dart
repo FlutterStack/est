@@ -1,8 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:expert_properties/Model/ProposalModel.dart';
 import 'package:expert_properties/Model/user.dart';
-import 'package:expert_properties/SignupScreen/updateuser.dart';
 import 'package:expert_properties/bloc/user/repository/user_repository.dart';
 import 'package:meta/meta.dart';
 

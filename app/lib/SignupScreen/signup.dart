@@ -1,10 +1,6 @@
 import 'package:expert_properties/bloc/user/cubit/user_cubit.dart';
-import 'package:expert_properties/bloc/userfavorites/cubit/userfavorites_cubit.dart';
-import 'package:expert_properties/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:wave/config.dart';
-import 'package:wave/wave.dart';
 
 class SignUp extends StatefulWidget {
   @override

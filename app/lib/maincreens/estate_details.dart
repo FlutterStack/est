@@ -1,7 +1,5 @@
 import 'package:carousel_pro/carousel_pro.dart';
-import 'package:expert_properties/Model/estate_details.dart';
 import 'package:expert_properties/bloc/estates/cubit/estate_cubit.dart';
-import 'package:expert_properties/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';

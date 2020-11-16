@@ -5,11 +5,8 @@ import 'package:google_fonts/google_fonts.dart';
 
 import 'package:expert_properties/house_constants.dart';
 import '../Widgets/filter_widget.dart';
-// import 'floating_widget.dart';
+
 import '../Widgets/image_widget.dart';
-// import 'item_detail_screen.dart';
-//
-// import 'menu_widget.dart';
 
 class ListScreen extends StatelessWidget {
   final filterArray = [
@@ -29,11 +26,7 @@ class ListScreen extends StatelessWidget {
     );
     return Scaffold(
       backgroundColor: kActiveBgCardColor,
-      // floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      // floatingActionButton: FloatingWidget(
-      //   leadingIcon: Icons.explore,
-      //   txt: "Map view",
-      // ),
+     
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.only(
@@ -44,22 +37,7 @@ class ListScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              //   children: <Widget>[
-              //     MenuWidget(
-              //       iconImg: Icons.subject,
-              //       iconColor: Colors.white,
-              //     ),
-              //     MenuWidget(
-              //       iconImg: Icons.repeat,
-              //       iconColor: Colors.white,
-              //     ),
-              //   ],
-              // ),
-              // SizedBox(
-              //   height: 30,
-              // ),
+            
               Text(
                 "City",
                 style: GoogleFonts.notoSans(

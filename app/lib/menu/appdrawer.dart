@@ -53,25 +53,28 @@ class _AppDrawerState extends State<AppDrawer> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Padding(
-                  padding: EdgeInsets.only(left: 20, bottom: 10),
+                  padding: EdgeInsets.only(left: 90, bottom: 10),
                   child: CircleAvatar(
-                    radius: 40,
+                    radius: 60,
                     backgroundImage: AssetImage('assets/images/logob.jpg'),
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 20),
+                  padding: const EdgeInsets.only(left: 110),
                   child: Text(
                     user.firstName + " " + user.lastName,
                     style: TextStyle(fontWeight: FontWeight.w600, fontSize: 17),
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 20, bottom: 15),
+                  padding: const EdgeInsets.only(left: 90, bottom: 30),
                   child: Text(
                     user.email,
                   ),
-                )
+
+                ),
+          
+
               ],
             ),
           ),
@@ -88,11 +91,7 @@ class _AppDrawerState extends State<AppDrawer> {
                         ListTile(
                           leading: Icon(Icons.person),
                           onTap: () {
-                            // Navigator.pushNamedAndRemoveUntil(
-                            //   context,
-                            //   '/user/profile',
-                            //   ModalRoute.withName('/login'),
-                            // );
+                        
                             Navigator.pushNamed(context, '/user/profile');
                           },
                           dense: true,
@@ -100,30 +99,13 @@ class _AppDrawerState extends State<AppDrawer> {
                               style: TextStyle(
                                   fontSize: 15, fontWeight: FontWeight.w400)),
                         ),
-                        SizedBox(height: 20),
-                        ListTile(
-                          leading: Icon(Icons.settings),
-                          onTap: () {
-                            // Navigator.pushNamedAndRemoveUntil(
-                            //     context,
-                            //     '/customer/editprofile',
-                            //     ModalRoute.withName(
-                            //         '/customer/customerhomescreen'));
-                          },
-                          dense: true,
-                          title: Text('Settings',
-                              style: TextStyle(
-                                  fontSize: 15, fontWeight: FontWeight.w400)),
-                        ),
+                       
+                        
                         SizedBox(height: 20),
                         ListTile(
                           leading: Icon(Icons.favorite),
                           onTap: () {
-                            // Navigator.pushNamedAndRemoveUntil(
-                            //   context,
-                            //   '/user/favorites',
-                            //   ModalRoute.withName('/homescreen'),
-                            // );
+                           
                             Navigator.pushNamed(context, '/user/favorites');
                           },
                           dense: true,
@@ -134,6 +116,7 @@ class _AppDrawerState extends State<AppDrawer> {
                       ],
                     ),
                   ),
+                  
                   Container(
                     child: ListTile(
                       leading: Icon(Icons.exit_to_app),
