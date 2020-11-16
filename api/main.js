@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 var app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true}));
+var port = Number(process.env.PORT|| 3000);
 
 app.group("/api/v1", (router) => {
     router.post('/user/auth', User.userAuth);
@@ -19,8 +20,7 @@ app.group("/api/v1", (router) => {
     router.post('/user/update', User.updateUser);
 });
 
-
-var server = app.listen(3000, function(){
+var server = app.listen(port, function(){
     var host = server.address().address;
     var port = server.address().port;
     console.log('REST API app listening at http://%s:%s', host, port)
