@@ -30,7 +30,7 @@ dependencies:
   flutter_bloc: ^6.1.0
   equatable: ^1.2.5
   wave: ^0.1.0
-  firebase_database:
+  
 
 dev_dependencies:
   flutter_test:
