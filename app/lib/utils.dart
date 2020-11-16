@@ -7,9 +7,9 @@ class Utils {
   String _getApiHost() {
     var apiHost = '';
     if (Platform.isIOS) {
-      apiHost = 'http://localhost:3000/';
+      apiHost = 'https://expertpropertiesapi.herokuapp.com/';
     } else {
-      apiHost = 'http://10.0.2.2:3000/';
+      apiHost = 'https://expertpropertiesapi.herokuapp.com/';
     }
     return apiHost;
   }
