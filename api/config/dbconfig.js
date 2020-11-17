@@ -1,7 +1,7 @@
 module.exports = {
     HOST: "162.214.80.34",
-    USER: "cfecsymy_WPQOO",
-    PASSWORD: "Y46.BH36MWT=",
-    DB: "cfecsymy_WPQOO",
+    USER: "cfecsymy",
+    PASSWORD: "Business001!",
+    DB: "cfecsymy_expertproperties",
     PORT: 3306
 }
