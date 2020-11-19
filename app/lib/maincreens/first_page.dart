@@ -2,12 +2,14 @@ import 'package:expert_properties/Model/properties.dart';
 import 'package:expert_properties/bloc/properties/cubit/property_cubit.dart';
 import 'package:expert_properties/components/bgCard.dart';
 import 'package:expert_properties/constants.dart';
+import 'package:expert_properties/maincreens/addproperty.dart';
 import 'package:expert_properties/menu/appdrawer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../components/iconText_button.dart';
-
+import 'package:bottom_navy_bar/bottom_navy_bar.dart';
+import 'package:flutter_icons/flutter_icons.dart';
 
 class FirstPage extends StatefulWidget {
   FirstPage(context);
@@ -26,8 +28,11 @@ class _FirstPageState extends State<FirstPage> {
     FontAwesomeIcons.shopware,
     FontAwesomeIcons.mountain
   ];
+  PageController _pageController;
+  int _page = 1;
   @override
   void initState() {
+    _pageController = PageController(initialPage: _page);
     loadProperties();
     super.initState();
   }
@@ -55,31 +60,65 @@ class _FirstPageState extends State<FirstPage> {
         appBar: AppBar(
           backgroundColor: kAFabColor,
           title: Text(
-            'Choose Property',
+            _page == 0 ? 'Home' : 'Add Property',
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
-         
         ),
         drawer: AppDrawer(),
-        body: Container(
-          padding: EdgeInsets.all(30),
-          child: BlocBuilder<PropertyCubit, PropertyState>(
-            builder: (context, state) {
-              if (state is PropertyInitial) {
-                print("Initializing Property...");
-                return propertyInitial();
-              } else if (state is PropertyLoading) {
-                print("Loading property...");
-                return loadingProperty();
-              } else if (state is PropertyLoaded) {
-                print("Loaded property...");
-                return displayedProperties(state.property);
-              } else if (state is PropertyError) {
-                print("Error");
-                return propertyError();
-              }
-            },
-          ),
+        body: PageView(
+          onPageChanged: onPageChanged,
+          physics: NeverScrollableScrollPhysics(),
+          controller: _pageController,
+          children: [
+            Container(
+              padding: EdgeInsets.all(0),
+              child: Container(
+                padding: EdgeInsets.all(20),
+                child: BlocBuilder<PropertyCubit, PropertyState>(
+                  builder: (context, state) {
+                    if (state is PropertyInitial) {
+                      print("Initializing Property...");
+                      return propertyInitial();
+                    } else if (state is PropertyLoading) {
+                      print("Loading property...");
+                      return loadingProperty();
+                    } else if (state is PropertyLoaded) {
+                      print("Loaded property...");
+                      return displayedProperties(state.property);
+                    } else if (state is PropertyError) {
+                      print("Error");
+                      return propertyError();
+                    }
+                  },
+                ),
+              ),
+            ),
+          ],
+        ),
+        bottomNavigationBar: BottomNavyBar(
+          backgroundColor: Colors.white,
+          selectedIndex: _page,
+          onItemSelected: (index) {
+            setState(() => _page = index);
+            _pageController.jumpToPage(index);
+          },
+          items: <BottomNavyBarItem>[
+            BottomNavyBarItem(
+              title: Text('Home'),
+              icon: Icon(Icons.home),
+              activeColor: Colors.red,
+            ),
+            BottomNavyBarItem(
+              title: Text('Properties'),
+              icon: Icon(FlutterIcons.building_faw),
+              activeColor: Colors.red,
+            ),
+            BottomNavyBarItem(
+              title: Text('Settings'),
+              icon: Icon(Icons.settings),
+              activeColor: Colors.red,
+            ),
+          ],
         ),
       ),
     );
@@ -93,7 +132,23 @@ class _FirstPageState extends State<FirstPage> {
   // LOADING PROPERTY
   Widget loadingProperty() {
     return Center(
-      child: CircularProgressIndicator(),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          CircularProgressIndicator(),
+          SizedBox(
+            height: 10,
+          ),
+          Text(
+            'Gathering Properties',
+            style: TextStyle(
+                color: Colors.black54,
+                fontSize: 13,
+                fontWeight: FontWeight.w600),
+          )
+        ],
+      ),
     );
   }
 
@@ -109,7 +164,7 @@ class _FirstPageState extends State<FirstPage> {
               flex: 8,
               child: Container(
                 decoration: BoxDecoration(
-                  color: Colors.red[800],
+                  color: Colors.red[600],
                   borderRadius: BorderRadius.circular(20.0),
                   boxShadow: [
                     BoxShadow(
@@ -120,7 +175,7 @@ class _FirstPageState extends State<FirstPage> {
                     )
                   ],
                 ),
-                margin: EdgeInsets.only(top: 40),
+                margin: EdgeInsets.only(bottom: 40),
                 child: Center(
                   child: ListTile(
                     onTap: () {
@@ -169,5 +224,13 @@ class _FirstPageState extends State<FirstPage> {
   Widget propertyError() {
     return Container();
   }
-}
 
+  //////////////////////////////
+  // onPageChanged()
+  //////////////////////////////
+  void onPageChanged(int page) {
+    setState(() {
+      this._page = page;
+    });
+  }
+}

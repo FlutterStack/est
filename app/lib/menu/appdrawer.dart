@@ -41,100 +41,101 @@ class _AppDrawerState extends State<AppDrawer> {
 
   // LOAD DRAWER
   Widget loadDrawer() {
-    return Center(
-      child: Column(
-        children: [
-          Container(
-            color: Colors.red,
-            width: double.infinity,
-            height: 210,
+    return Column(
+      children: [
+        Container(
+          color: Colors.red,
+          width: double.infinity,
+          height: 210,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(left: 20, bottom: 10),
+                child: CircleAvatar(
+                  radius: 40,
+                  backgroundImage: AssetImage('assets/images/logob.jpg'),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 20),
+                child: Text(
+                  user.firstName + " " + user.lastName,
+                  style: TextStyle(fontWeight: FontWeight.w600, fontSize: 17),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 20, bottom: 30),
+                child: Text(
+                  user.email,
+                ),
+              ),
+            ],
+          ),
+        ),
+        Expanded(
+          child: Container(
+            padding: EdgeInsets.all(20),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.only(left: 90, bottom: 10),
-                  child: CircleAvatar(
-                    radius: 60,
-                    backgroundImage: AssetImage('assets/images/logob.jpg'),
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  child: Column(
+                    children: [
+                      SizedBox(height: 10),
+                      ListTile(
+                        leading: Icon(Icons.person),
+                        onTap: () {
+                          Navigator.pushNamed(context, '/user/profile');
+                        },
+                        dense: true,
+                        title: Text('Profile',
+                            style: TextStyle(
+                                fontSize: 15, fontWeight: FontWeight.w400)),
+                      ),
+                      SizedBox(height: 20),
+                      ListTile(
+                        leading: Icon(Icons.favorite),
+                        onTap: () {
+                          Navigator.pushNamed(context, '/user/favorites');
+                        },
+                        dense: true,
+                        title: Text('Favorites',
+                            style: TextStyle(
+                                fontSize: 15, fontWeight: FontWeight.w400)),
+                      ),
+                      SizedBox(height: 20),
+                      ListTile(
+                        leading: Icon(Icons.edit),
+                        onTap: () {
+                          Navigator.pushNamed(context, '/add/estate');
+                        },
+                        dense: true,
+                        title: Text('Add Property',
+                            style: TextStyle(
+                                fontSize: 15, fontWeight: FontWeight.w400)),
+                      ),
+                    ],
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 110),
-                  child: Text(
-                    user.firstName + " " + user.lastName,
-                    style: TextStyle(fontWeight: FontWeight.w600, fontSize: 17),
+                Container(
+                  child: ListTile(
+                    leading: Icon(Icons.exit_to_app),
+                    onTap: () {
+                      performLogout();
+                    },
+                    dense: true,
+                    title: Text('Log Out',
+                        style: TextStyle(
+                            fontSize: 15, fontWeight: FontWeight.w700)),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 90, bottom: 30),
-                  child: Text(
-                    user.email,
-                  ),
-
-                ),
-          
-
+                )
               ],
             ),
           ),
-          Expanded(
-            child: Container(
-              padding: EdgeInsets.all(20),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    child: Column(
-                      children: [
-                        SizedBox(height: 10),
-                        ListTile(
-                          leading: Icon(Icons.person),
-                          onTap: () {
-                        
-                            Navigator.pushNamed(context, '/user/profile');
-                          },
-                          dense: true,
-                          title: Text('Profile',
-                              style: TextStyle(
-                                  fontSize: 15, fontWeight: FontWeight.w400)),
-                        ),
-                       
-                        
-                        SizedBox(height: 20),
-                        ListTile(
-                          leading: Icon(Icons.favorite),
-                          onTap: () {
-                           
-                            Navigator.pushNamed(context, '/user/favorites');
-                          },
-                          dense: true,
-                          title: Text('Favorites',
-                              style: TextStyle(
-                                  fontSize: 15, fontWeight: FontWeight.w400)),
-                        ),
-                      ],
-                    ),
-                  ),
-                  
-                  Container(
-                    child: ListTile(
-                      leading: Icon(Icons.exit_to_app),
-                      onTap: () {
-                        performLogout();
-                      },
-                      dense: true,
-                      title: Text('Log Out',
-                          style: TextStyle(
-                              fontSize: 15, fontWeight: FontWeight.w700)),
-                    ),
-                  )
-                ],
-              ),
-            ),
-          )
-        ],
-      ),
+        )
+      ],
     );
   }
 

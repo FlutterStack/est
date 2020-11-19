@@ -18,6 +18,7 @@ app.group("/api/v1", (router) => {
     router.post('/user/favorites/all', Estate.getUserFavorites);
     router.post('/user/register', User.registerUser);
     router.post('/user/update', User.updateUser);
+    router.post('/add/estate', Estate.addEstate);
 });
 
 var server = app.listen(port, function(){

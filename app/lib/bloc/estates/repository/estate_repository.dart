@@ -1,11 +1,13 @@
 import 'dart:convert';
 import 'package:expert_properties/Model/estate.dart';
+import 'package:expert_properties/constants.dart';
 import 'package:http/http.dart' as http;
 
 import 'package:expert_properties/utils.dart';
 
 class EstateRepository {
   Utils utils = new Utils();
+  bool _isSave = false;
   Future<List<EstateInfo>> getEstatesByPropertyId(int propertyId) async {
     List<EstateInfo> _lEstate;
     try {
@@ -40,6 +42,35 @@ class EstateRepository {
       }
     } catch (e) {
       print("Unable to fetch estate information");
+    }
+  }
+
+  Future<bool> addEstate(Map<String, dynamic> info) async {
+    try {
+      var body = Map<String, dynamic>();
+      body["name"] = info["name"];
+      body["location"] = info["location"];
+      body["amount"] = info["amount"];
+      body["propertyId"] = info["propertyId"];
+      body["rooms"] = info["rooms"];
+      body["garage"] = info["garage"];
+      body["kitchens"] = info["kitchens"];
+      body["bathrooms"] = info["bathrooms"];
+      body["size"] = info["size"];
+      body["desc"] = info["desc"];
+
+      String url = utils.getEndPoint('api/v1/add/estate');
+      var response = await http.post(url, body: body);
+      if (response.statusCode == 200) {
+        var data = json.decode(response.body);
+        if (data == status_code_success.toString()) {
+          return _isSave = true;
+        } else {
+          return _isSave = false;
+        }
+      }
+    } catch (e) {
+      print("Unable to save record: $e");
     }
   }
 }

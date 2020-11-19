@@ -12,6 +12,7 @@ class EstateCubit extends Cubit<EstateState> {
 
   Future<List<EstateInfo>> getEstatesByPropertyId(int propertyId) async {
     try {
+      emit(EstateLoading());
       final estates =
           await _estateRepository.getEstatesByPropertyId(propertyId);
       if (estates != null) {
@@ -32,6 +33,19 @@ class EstateCubit extends Cubit<EstateState> {
         return details.toList();
       } else {
         return null;
+      }
+    } on Exception {
+      print("Unable to load details");
+    }
+  }
+
+  Future<bool> addEstate(Map<String, dynamic> info) async {
+    try {
+      final isSave = await _estateRepository.addEstate(info);
+      if (isSave == true) {
+        return isSave;
+      } else {
+        return isSave;
       }
     } on Exception {
       print("Unable to load details");

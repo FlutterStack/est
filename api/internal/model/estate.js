@@ -89,4 +89,36 @@ Estate.getUserFavorites = (userId, result) => {
     });
 }
 
+Estate.addEstate = (name, location, amount, propertyId, rooms, garage, kitchens, bathrooms, size, desc, result) => {
+    var sqlIns = "";
+    sqlIns = sqlIns + " INSERT INTO estate SET property_id=?, estate_name=?, estate_location=?, description=?, amount=? ";
+
+    console.log("QUERY: " + sqlIns);
+    dbcon.query(sqlIns, [propertyId, name, location, desc, amount], (err, res) => {
+        console.log(res);
+        var estateId = res.insertId;
+       
+        if(estateId != "") {
+            var sqlIns = "";
+            sqlIns = sqlIns + " INSERT into lu_estate_info SET estate_id=?, no_of_rooms=?, no_of_garage=?, no_of_kitchens=?, no_of_bathrooms=?, description=?, size=? ";
+
+            dbcon.query(sqlIns, [estateId, rooms, garage, kitchens, bathrooms, desc, size], (err, res) => {
+                if(err) {
+                    console.log("Unable to do insert estate info", err);
+                    result(err, null);
+                    return;
+                } else if(res) {
+                    console.log("Success Insert estate information");
+                    var statuscode = 0;
+                    result(null, statuscode.toString());
+                    return;
+                }
+                result({data: null}, null);
+            });
+        } else {
+            console.log("Unable to Insert data")
+        }
+    });
+}
+
 module.exports = Estate;

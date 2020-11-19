@@ -12,7 +12,7 @@ class PropertyCubit extends Cubit<PropertyState> {
 
   Future<List<Property>> loadProperties() async {
     try {
-      emit(PropertyInitial());
+      emit(PropertyLoading());
       final properties = await _propertyRepo.loadProperties();
       if (properties.length != 0) {
         emit(PropertyLoaded(properties));

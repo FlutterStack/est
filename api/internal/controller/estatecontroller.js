@@ -76,3 +76,35 @@ exports.getUserFavorites = (req, res) => {
         }
     });
 }
+
+exports.addEstate = (req, res) => {
+    var name = req.body.name;
+    var location = req.body.location;
+    var amount = req.body.amount;
+    var propertyId = req.body.propertyId;
+    var rooms = req.body.rooms;
+    var garage = req.body.garage;
+    var kitchens = req.body.kitchens;
+    var bathrooms = req.body.bathrooms;
+    var size = req.body.size;
+    var desc = req.body.desc;
+
+    Estate.addEstate(name, location, amount, propertyId, rooms, garage, kitchens, bathrooms, size, desc, (err, data) => {
+        if(err) {
+            if(err.data == null) {
+                res.status(404).send({
+                    message: 'Unable to insert estates info'
+                })
+                return;
+            } else {
+                res.status(500).send({
+                    message: 'Server Error'
+                })
+                return;
+            }
+        } else {
+            res.status(200).json(data);
+            return;
+        }
+    })
+}
