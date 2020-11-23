@@ -3,6 +3,7 @@ import 'package:expert_properties/bloc/properties/cubit/property_cubit.dart';
 import 'package:expert_properties/components/bgCard.dart';
 import 'package:expert_properties/constants.dart';
 import 'package:expert_properties/maincreens/addproperty.dart';
+import 'package:expert_properties/maincreens/contact.dart';
 import 'package:expert_properties/menu/appdrawer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -56,11 +57,11 @@ class _FirstPageState extends State<FirstPage> {
       right: isCollapsed ? 0 : -0.4 * screenWidth,
       duration: duration,
       child: Scaffold(
-        backgroundColor: Colors.grey[100],
+        backgroundColor: Colors.white,
         appBar: AppBar(
           backgroundColor: kAFabColor,
           title: Text(
-            _page == 0 ? 'Home' : 'Add Property',
+            _page == 0 ? 'Home' : 'Contact Us',
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
         ),
@@ -93,6 +94,7 @@ class _FirstPageState extends State<FirstPage> {
                 ),
               ),
             ),
+            Contact()
           ],
         ),
         bottomNavigationBar: BottomNavyBar(
@@ -108,14 +110,14 @@ class _FirstPageState extends State<FirstPage> {
               icon: Icon(Icons.home),
               activeColor: Colors.red,
             ),
+            // BottomNavyBarItem(
+            //   title: Text('Properties'),
+            //   icon: Icon(FlutterIcons.building_faw),
+            //   activeColor: Colors.red,
+            // ),
             BottomNavyBarItem(
-              title: Text('Properties'),
-              icon: Icon(FlutterIcons.building_faw),
-              activeColor: Colors.red,
-            ),
-            BottomNavyBarItem(
-              title: Text('Settings'),
-              icon: Icon(Icons.settings),
+              title: Text('Contact Us'),
+              icon: Icon(Icons.phone),
               activeColor: Colors.red,
             ),
           ],
