@@ -367,7 +367,7 @@ class _AddPropertyState extends State<AddProperty> {
       isSave = isSave;
     });
     if (isSave == true) {
-      print("SUCCESS!!");
+      print("SUCCESS! Your Property is Uploaded.");
     } else {
       print("Unable to insert estate");
     }
