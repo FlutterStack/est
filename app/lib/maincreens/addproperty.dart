@@ -335,7 +335,7 @@ class _AddPropertyState extends State<AddProperty> {
                     },
                     padding: EdgeInsets.all(15),
                     child: Text(
-                      'Next',
+                      'Save',
                       style: TextStyle(fontSize: 18),
                     ),
                   ),
@@ -366,7 +366,6 @@ class _AddPropertyState extends State<AddProperty> {
     setState(() {
       isSave = isSave;
     });
-
     if (isSave == true) {
       print("SUCCESS!!");
     } else {
